@@ -6,6 +6,12 @@ Regarder les 3 videos : ❌
   - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ❌
   - Short introduction to threads (pthreads) https://www.youtube.com/watchv=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2 ❌
 
+
+
+
+
+5. Lire le Readme de Romain ❌
+
 Divers : 
 
 Un Philosophe peut faire trois choses :  
