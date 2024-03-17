@@ -3,9 +3,11 @@
 1. Les threads : ❌
   - C'est quoi un thread ?
 
-    Un thread est une séquence d'instructions et de données qui peuvent être exécutées simultanément avec d'autres threads sur un processeur. 
+    Un thread est une séquence d'instructions et de données qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
   
   - A quoi sa sert ? ❌
+
+  - De quoi est t'il composée ? ❌
 
   - Comment s'en servir ? ❌
     
