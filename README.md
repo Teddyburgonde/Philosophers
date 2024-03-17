@@ -2,7 +2,9 @@
 
 1. Les threads : ❌
   - C'est quoi un thread ?
+
     Un thread est une unité de base de l'utilisation du processeur.
+  
   - A quoi sa sert ? ❌
 
   - Comment s'en servir ? ❌
