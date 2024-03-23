@@ -23,7 +23,11 @@ Regarder les 3 videos : ❌
   - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ❌
   - Short introduction to threads (pthreads) https://www.youtube.com/watchv=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2 ❌
 
+2. regarder la video de Jamshidbek Ergashev
+https://www.youtube.com/watch?v=UGQsvVKwe90
 
+3 Lire le read me de amyplant  
+https://github.com/iciamyplant/Philosophers/tree/master 
 
 5. Lire le Readme de Romain ❌
 
@@ -39,6 +43,8 @@ Le nombre de fourchette est egal au nombre de philosophes.
 
 Footer ✅
 Page Tean : ❌
+
+
 
 
 
