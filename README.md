@@ -41,8 +41,15 @@ Un Philosophe peut faire trois choses :
 Pour manger il doit choisir deux fourchettes (celle devant lui et une autre a sa droite ou a sa gauche.
 Le nombre de fourchette est egal au nombre de philosophes.
 
+
+Un processus peut avoir plusieurs threads , une tache pour chaque threads.
+Chaque thread a sa sa pile et ses propres registres.
+Chaque thread a access au code , la data et les fichiers. 
+
+
 Footer ✅
 Page Tean : ❌
+
 
 
 
