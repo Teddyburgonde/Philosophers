@@ -77,6 +77,8 @@ A quoi sa sert ? ✅
   	- Economy : Partage les ressources et donc c'est plus economique en ressources
   	- L'utilisation d'architectures multi-processeurs : permet que les taches s'execute en meme temps
 
+![Screenshot from 2024-03-23 16-53-14](https://github.com/Teddyburgonde/Philosophers/assets/93845046/acd82623-7e7a-49f9-81de-a236d106bff6)
+
 De quoi est t'il composée ? ✅
 
     Un thread est composé de :
