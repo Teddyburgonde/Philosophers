@@ -68,7 +68,7 @@ Chaque philosophe est un thread, et chaque fourchette est un mutex.
 
 Les threads : ✅
 
-	Un thread est une séquence d'instructions et de données qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
+	Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
   
 A quoi sa sert ? ✅
    
