@@ -1,4 +1,44 @@
+🚧 En construction... Derniere mises a jour 25/03/2024
+
 # Philosophers
+
+C'est quoi un thread ? 
+
+- Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
+Dans philosophers on doit utiliser plusieurs thread.
+
+- Un thread est composé de :
+      - Un id
+      - Un compteur
+      - Un ensemble de registre
+      - Une stack 
+
+Comment crée un thread :
+
+<img width="700" alt="Capture d’écran 2024-03-25 à 00 09 03" src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/5233d90d-2480-4d07-b328-68a526074dcc">
+
+Les avantages d'utiliser les thread ? 
+	- La reactivité : permet a un programme de continuer meme si une parti est bloqué.
+	- Partage de ressource : permet a l'application d'avoir plusieurs types d'activité differents
+	- Economy : Partage les ressources et donc c'est plus economique en ressources
+	- L'utilisation d'architectures multi-processeurs : permet que les taches s'execute en meme temps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Les fonctions : ✅
 
@@ -66,26 +106,7 @@ Definition : ✅
 
 Chaque philosophe est un thread, et chaque fourchette est un mutex.
 
-Les threads : ✅
 
-	Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
-  
-A quoi sa sert ? ✅
-   
-  	- La reactivité : permet a un programme de continuer meme si une parti est bloqué.
-  	- Partage de ressource : permet a l'application d'avoir plusieurs types d'activité differents
-  	- Economy : Partage les ressources et donc c'est plus economique en ressources
-  	- L'utilisation d'architectures multi-processeurs : permet que les taches s'execute en meme temps
-
-![Screenshot from 2024-03-23 16-53-14](https://github.com/Teddyburgonde/Philosophers/assets/93845046/acd82623-7e7a-49f9-81de-a236d106bff6)
-
-De quoi est t'il composée ? ✅
-
-    Un thread est composé de :
-      - Un id
-      - Un compteur
-      - Un ensemble de registre
-      - Une stack 
 
 Semaphore : ✅    
 
@@ -100,7 +121,7 @@ A faire :
 
 Regarder les 3 videos : ❌
   - Introduction to threads https://www.youtube.com/watch?v=LOfGJcVnvAk ✅
-  - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ❌
+  - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
   - Short introduction to threads (pthreads) https://www.youtube.com/watchv=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2 ❌
 
 2. regarder la video de Jamshidbek Ergashev
@@ -109,7 +130,9 @@ https://www.youtube.com/watch?v=UGQsvVKwe90
 3. Lire le read me de amyplant  
 https://github.com/iciamyplant/Philosophers/tree/master 
 
-5. Lire le Readme de Romain ❌
+4. Lire le Readme de Romain ❌
+
+
 
 Divers : 
 
