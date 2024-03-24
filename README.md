@@ -18,6 +18,7 @@ Comment crée un thread :
 <img width="700" alt="Capture d’écran 2024-03-25 à 00 09 03" src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/5233d90d-2480-4d07-b328-68a526074dcc">
 
 Les avantages d'utiliser les thread ? 
+
 	- La reactivité : permet a un programme de continuer meme si une parti est bloqué.
 	- Partage de ressource : permet a l'application d'avoir plusieurs types d'activité differents
 	- Economy : Partage les ressources et donc c'est plus economique en ressources
