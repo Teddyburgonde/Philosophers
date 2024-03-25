@@ -9,7 +9,7 @@ SUIVEZ CE README ! =)
 
 # Philosophers
 
-C'est quoi un thread ? 
+# C'est quoi un thread ? 
 
 - Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
 - Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
@@ -21,7 +21,7 @@ C'est quoi un thread ?
 	- Un ensemble de registre
  	- Une stack 
 
-Comment crée un thread ?
+# Comment crée un thread ?
 
 ```C
 #include <pthread.h>
@@ -61,7 +61,7 @@ int	main()
 
 
 
-Les fonctions : ✅
+# Les fonctions : ✅
 
 - memset : elle permet de remplir une zone mémoire, avec une valeur specifique.
 void *memset(void *ptr, int value, size_t num);
