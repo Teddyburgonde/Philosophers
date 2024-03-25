@@ -76,7 +76,7 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 
 ## **Comment crée un mutex ?**
 
-```
+```C
 int	main(void)
 {	
 	// Déclaration d'un mutex
