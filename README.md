@@ -21,7 +21,7 @@ Dans philosophers on doit utiliser plusieurs thread.
 	- Un ensemble de registre
  	- Une stack 
 
-Comment crée un thread :
+Comment crée un thread ?
 
 ```C
 #include <pthread.h>
@@ -54,7 +54,6 @@ int	main()
 	pthread_join(thread1, NULL);
 }
 ```
-
 
 Les avantages d'utiliser les thread ? 
 
