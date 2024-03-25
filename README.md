@@ -103,7 +103,7 @@ int	main(void)
 ```
 
 
-
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 
 
@@ -141,44 +141,12 @@ int	main(void)
 
 # Les fonctions : ✅
 
-- memset : elle permet de remplir une zone mémoire, avec une valeur specifique.
-void *memset(void *ptr, int value, size_t num);
-
-
-- fork: Crée un nouveau processus en dupliquant le processus appelant. Le processus fils a une copie exacte de l'espace d'adressage du parent.
-pid_t fork(void);
-
-
-- kill: Envoie un signal à un processus ou à un groupe de processus.
-int kill(pid_t pid, int sig);
-
-
-- exit: Termine l'exécution du processus en cours.
-void exit(int status);
-
-
-- pthread_create: Crée un nouveau thread dans un processus.
-int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
-
-
-- pthread_detach: Détache un thread, ce qui permet au système de libérer automatiquement les ressources lorsque le thread se termine.
-int pthread_detach(pthread_t thread);
-
-
-- pthread_join: Attend la fin de l'exécution d'un thread.
-int pthread_join(pthread_t thread, void **retval);
-
-
 - usleep: Met le thread en attente pendant un certain nombre de microsecondes.
 int usleep(useconds_t usec);
 
 
 - gettimeofday: Récupère le temps écoulé depuis l'époque dans une structure timeval.
 int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-
-- waitpid: Suspend l'exécution du processus appelant jusqu'à ce qu'un processus fils spécifié se termine.
-pid_t waitpid(pid_t pid, int *status, int options);
 
 
 sem_open: Ouvre ou crée un sémaphore nommé.
@@ -196,14 +164,9 @@ int sem_post(sem_t *sem);
 sem_wait: Décrémente la valeur d'un sémaphore et bloque si la valeur est négative.
 int sem_wait(sem_t *sem);
 
-
 sem_unlink: Supprime un sémaphore nommé.
 int sem_unlink(const char *name);
 
-
-Definition : ✅
-
-Chaque philosophe est un thread, et chaque fourchette est un mutex.
 
 
 
@@ -211,19 +174,15 @@ Semaphore : ✅
 
 	Un sémaphore est un mécanisme de synchronisation utilisé dans la programmation multithread et multiprocessus pour contrôler l'accès concurrent à des ressources partagées. Son rôle principal est de réguler l'accès à une ressource partagée entre plusieurs threads ou processus en imposant des règles d'accès.    
 
-mutex : ✅
-	C'est un mecanisme de synchronisation qui evite que deux thread s'execute en meme temps.
 
-	
 A faire : 
 
 
-Regarder les 3 videos : ❌
+Regarder les 3 videos : ✅
   - Introduction to threads https://www.youtube.com/watch?v=LOfGJcVnvAk ✅
   - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
-  - 
 
-2. regarder la video de Jamshidbek Ergashev
+2. regarder la video de Jamshidbek Ergashev ❌
 https://www.youtube.com/watch?v=UGQsvVKwe90
 
 3. Lire le read me de amyplant  
