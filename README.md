@@ -15,10 +15,11 @@ C'est quoi un thread ?
 Dans philosophers on doit utiliser plusieurs thread.
 
 - Un thread est composé de :
-      - Un id
-      - Un compteur
-      - Un ensemble de registre
-      - Une stack 
+  
+  	- Un id
+	- Un compteur
+	- Un ensemble de registre
+ 	- Une stack 
 
 Comment crée un thread :
 
