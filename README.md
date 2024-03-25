@@ -7,9 +7,6 @@
 Vous voulez finir ce projet aussi rapidement que la vitesse des voitures de rocket league ? 
 SUIVEZ CE README ! =)
 
-
-
-
 # Philosophers
 
 C'est quoi un thread ? 
@@ -25,15 +22,13 @@ Dans philosophers on doit utiliser plusieurs thread.
 
 Comment crée un thread :
 
-<img width="700" alt="Capture d’écran 2024-03-25 à 00 09 03" src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/5233d90d-2480-4d07-b328-68a526074dcc">
-
 ```C
 #include <pthread.h>
 #include <stdio.h>
 
 void	*ft_write_word(void *data)
 {
-	printf("salut");
+	printf("salut\n");
 }
 
 int	main()
@@ -41,13 +36,22 @@ int	main()
 	// declaration d'un thread
 	pthread_t	thread1;
 
-	// il prends en arguments
+	// il prends en arguments :
+
+	// 1. Un pointeur vers une variable de type pthread_t (c'est un identifiant)
+	// 2. Un pointeur vers une structure pthread_attr_t mais on en a pas donc on met NULL 
+	// 3. C'est un pointeur vers une fonction, la fonction doit accepter un argument de type void*
+	// 4. c'est l'argument de la fonction ft_write_word mais la on en a pas donc on met NULL
 	pthread_create(&thread1, NULL, ft_write_word, NULL);
 	
-	
+	// on affiche l'identifiant de thread1
+	printf("Main: Creation du premier thread [%lu]\n", (unsigned long)thread1);
+
+	// avec cette fonction on attends que thread1 se termine puis quand il est terminer
+	// le main peut prendre fin.
+	// essayer le avec ou sans cette ligne vous pourez voir la difference.
 	pthread_join(thread1, NULL);
 }
-
 ```
 
 
