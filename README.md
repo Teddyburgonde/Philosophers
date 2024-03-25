@@ -5,7 +5,7 @@
 
 ![roro](https://github.com/Teddyburgonde/Philosophers/assets/93845046/4dfa0811-9aca-46a9-8900-45aab9c0fe5f)
 
-Les voitures de Rocket league vont vite ... 
+Vous trouvez que les voitures de Rocket league vont vite ?
 
 Lisez mon README et vous terminerez si vite votre projet que vous aurez l'impression que les voitures de Rocket league sont lente :)
 
