@@ -17,6 +17,30 @@ Comment crée un thread :
 
 <img width="700" alt="Capture d’écran 2024-03-25 à 00 09 03" src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/5233d90d-2480-4d07-b328-68a526074dcc">
 
+```C
+#include <pthread.h>
+#include <stdio.h>
+
+void	*ft_write_word(void *data)
+{
+	printf("salut");
+}
+
+int	main()
+{	
+	// declaration d'un thread
+	pthread_t	thread1;
+
+	// il prends en arguments
+	pthread_create(&thread1, NULL, ft_write_word, NULL);
+	
+	
+	pthread_join(thread1, NULL);
+}
+
+```
+
+
 Les avantages d'utiliser les thread ? 
 
 	- La reactivité : permet a un programme de continuer meme si une parti est bloqué.
