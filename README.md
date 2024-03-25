@@ -163,7 +163,7 @@ int	main(void)
 
 
 
-# Les fonctions : ✅
+## Les fonctions : ✅
 
 - usleep: Met le thread en attente pendant un certain nombre de microsecondes.
 int usleep(useconds_t usec);
