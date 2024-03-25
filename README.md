@@ -54,8 +54,11 @@ int	main()
 	pthread_join(thread1, NULL);
 }
 ```
-
-
+# Compilation 
+Ne pas oublier de rajouter -lpthread 
+```
+gcc -Wall -Werror -Wextra -lpthread main.c
+```
 
 
 
