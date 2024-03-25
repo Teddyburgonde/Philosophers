@@ -80,7 +80,7 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 int	main(void)
 {	
 	// Déclaration d'un mutex
-	pthread_mutex_t	count_mutex;
+	pthread_mutex_t	mutex;
 
 	// Deux paramettre : 
 
@@ -88,10 +88,26 @@ int	main(void)
 	// 2. Un pointeur vers des attributs spécifiques pour le mutex.
 	// on en a pas donc on met NULL
 	// La fonction pthread_mutex_init renvoie toujours 0.
-	pthread_mutex_init(&count_mutex, NULL);
+	pthread_mutex_init(&mutex, NULL);
 	return (0);
 }
 ```
+## **Verrouiller un mutex**
+
+```C
+int	main(void)
+{
+	pthread_mutex_lock(&nameofmutex);
+	return (0);
+}
+```
+
+
+
+
+
+
+
 
 
 
