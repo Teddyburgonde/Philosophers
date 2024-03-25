@@ -108,7 +108,7 @@ int	main(void)
 	return (0);
 }
 ```
-## **Détruire un mutx**
+## **Détruire un mutex**
 ```C
 int	main(void)
 {
