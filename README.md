@@ -76,6 +76,23 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 
 ## **Comment crée un mutex ?**
 
+```
+int	main(void)
+{	
+	// Déclaration d'un mutex
+	pthread_mutex_t	count_mutex;
+
+	// Deux paramettre : 
+
+	// 1. Le mutex qu'on veut initialiser
+	// 2. Un pointeur vers des attributs spécifiques pour le mutex.
+	// on en a pas donc on met NULL
+	// La fonction pthread_mutex_init renvoie toujours 0.
+	pthread_mutex_init(&count_mutex, NULL);
+	return (0);
+}
+```
+
 
 
 
