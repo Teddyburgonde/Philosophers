@@ -30,6 +30,7 @@ SUIVEZ CE README ! =)
 void	*ft_write_word(void *data)
 {
 	printf("salut\n");
+	return (NULL);
 }
 
 int	main()
