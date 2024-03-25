@@ -12,7 +12,7 @@ SUIVEZ CE README ! =)
 C'est quoi un thread ? 
 
 - Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
-Dans philosophers on doit utiliser plusieurs thread.
+- Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
 
 - Un thread est composé de :
   
@@ -54,24 +54,6 @@ int	main()
 	pthread_join(thread1, NULL);
 }
 ```
-
-Les avantages d'utiliser les thread ? 
-
-	- La reactivité : permet a un programme de continuer meme si une parti est bloqué.
-	- Partage de ressource : permet a l'application d'avoir plusieurs types d'activité differents
-	- Economy : Partage les ressources et donc c'est plus economique en ressources
-	- L'utilisation d'architectures multi-processeurs : permet que les taches s'execute en meme temps
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,7 +143,7 @@ A faire :
 Regarder les 3 videos : ❌
   - Introduction to threads https://www.youtube.com/watch?v=LOfGJcVnvAk ✅
   - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
-  - Short introduction to threads (pthreads) https://www.youtube.com/watchv=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2 ❌
+  - 
 
 2. regarder la video de Jamshidbek Ergashev
 https://www.youtube.com/watch?v=UGQsvVKwe90
