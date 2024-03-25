@@ -7,7 +7,7 @@
 
 Les voitures de Rocket league vont vite ... 
 
-Lisez mon Readme et vous terminerez si vite ce projet que vous aurez l'impression que les voitures de Rocket league sont lente :)
+Lisez mon README et vous terminerez si vite votre projet que vous aurez l'impression que les voitures de Rocket league sont lente :)
 
 # **Philosophers**
 
