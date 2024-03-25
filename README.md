@@ -8,9 +8,9 @@ Les voitures de Rocket league vont vite ...
 
 Lisez mon Readme et vous terminerez si vite ce projet que vous aurez l'impression que les voitures de Rocket league sont lente :)
 
-# Philosophers
+# ** Philosophers **
 
-# C'est quoi un thread ? 
+## ** C'est quoi un thread ? **
 
 - Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
 - Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
@@ -22,7 +22,7 @@ Lisez mon Readme et vous terminerez si vite ce projet que vous aurez l'impressio
 	- Un ensemble de registre
  	- Une stack 
 
-# Comment crée un thread ?
+## ** Comment crée un thread ? **
 
 ```C
 #include <pthread.h>
@@ -60,12 +60,12 @@ int	main()
 	pthread_detach(thread1);
 }
 ```
-# Compilation 
+##  ** Compilation **
 Ne pas oublier de rajouter -lpthread 
 ```
 gcc -Wall -Werror -Wextra -lpthread main.c
 ```
-# C'est quoi un Mutex ? 
+## ** C'est quoi un Mutex ? **
 
 - C'est un mecanisme de synchronisation qui evite que deux thread s'execute en meme temps.
 
@@ -73,7 +73,7 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 
 - On peut penser à un mutex comme au verrou de la porte des toilettes. Un thread vient le verrouiller pour indiquer que les toilettes sont occupées. Les autres threads devront alors attendre patiemment que la porte soit déverrouillée avant de pouvoir accéder aux toilettes à leur tour.
 
-# Comment crée un mutex ?
+## ** Comment crée un mutex ?**
 
 
 
