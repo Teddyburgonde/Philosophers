@@ -108,8 +108,14 @@ int	main(void)
 	return (0);
 }
 ```
-
-
+## **Détruire un mutx**
+```C
+int	main(void)
+{
+	pthread_mutex_destroy(&nameofmutex);
+	return (0);
+}
+```
 
 
 
