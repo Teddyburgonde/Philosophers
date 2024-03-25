@@ -52,6 +52,10 @@ int	main()
 	// le main peut prendre fin.
 	// essayer le avec ou sans cette ligne vous pourez voir la difference.
 	pthread_join(thread1, NULL);
+
+	// permet de libérer les ressources du thread mais empêche de synchroniser plusieurs thrads
+	// a l'aide de pthread_join.
+	pthread_detach(thread1);
 }
 ```
 # Compilation 
@@ -59,6 +63,39 @@ Ne pas oublier de rajouter -lpthread
 ```
 gcc -Wall -Werror -Wextra -lpthread main.c
 ```
+# C'est quoi un Mutex ? 
+
+- C'est un mecanisme de synchronisation qui evite que deux thread s'execute en meme temps.
+
+![Screenshot from 2024-03-25 17-08-12](https://github.com/Teddyburgonde/Philosophers/assets/93845046/8415d620-a47f-467a-a5d3-0b80702586fd)
+
+# Comment crée un mutex ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
