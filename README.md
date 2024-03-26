@@ -119,6 +119,11 @@ int	main(void)
 ## Comprendre l'importance du mutex 
 
 ```c
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+
 void	*print1(void *mutex)
 {
 	int	i;
@@ -131,7 +136,7 @@ void	*print1(void *mutex)
 		printf("%c", str[i]);
 		i++;
 	}
-	write(1, "\n", 1);
+	printf("\n");
 	pthread_mutex_unlock(mutex);
 }
 
@@ -147,7 +152,6 @@ void  *print2(void *mutex)
 		printf("%c", str[i]);
 		i++;
 	}
-	write(1, "\n", 1);
 	pthread_mutex_unlock(mutex);
 }
 
@@ -159,7 +163,7 @@ int  main(void)
 
 	pthread_mutex_init(&mutex, NULL);
 	pthread_create(&t1, NULL, print1, &mutex);
-	pthread_create(&t2, NULL, print2, &mutex);
+	pthread_create(&t2, NULL, print2,  &mutex);
 	pthread_join(t1, NULL);
 	pthread_join(t2, NULL);
 	pthread_mutex_destroy(&mutex);
