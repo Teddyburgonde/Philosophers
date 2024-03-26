@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-🚧 **En construction... Derniere mises a jour 26/03/2024 à 18h24.**
+🚧 **En construction... Derniere mises a jour 26/03/2024 à 16h09.**
 
 ![rleague](https://github.com/Teddyburgonde/Philosophers/assets/93845046/ad7ba6d3-a858-4389-9fec-27c3bcd5bcc7)
 
