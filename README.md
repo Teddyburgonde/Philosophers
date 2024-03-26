@@ -300,8 +300,11 @@ Erreur sans mutex :
 
 Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme temps donc cela pose probleme. 
 
+## Mettre en attente un programme avec usleep 
 
-
+- usleep return 0 en cas de success et -1 en cas d'erreur.
+- Elle prends en paramettre le temps en microsecondes. 
+- Comme chaque philosophe(thread) ne peut pas manger en meme temps , cela sert a faire attendre les autres philosophe.
 
 
 
