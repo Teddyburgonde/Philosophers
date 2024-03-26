@@ -395,10 +395,10 @@ Regarder les 3 videos : ✅
 2. regarder la video de Jamshidbek Ergashev ❌
 https://www.youtube.com/watch?v=UGQsvVKwe90
 
-3. Lire le read me de amyplant  
+3. Lire le read me de amyplant  ❌
 https://github.com/iciamyplant/Philosophers/tree/master 
 
-4. Lire le Readme de Romain ❌
+4. Lire le Readme de Romain ✅
 
 
 
