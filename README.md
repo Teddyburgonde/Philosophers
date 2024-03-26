@@ -21,7 +21,7 @@ Lisez mon README et vous terminerez si vite votre projet que vous aurez l'impres
 	- Un ensemble de registre
  	- Une stack 
 
-## **Comment crée un thread ?**
+## **Comment créer un thread ?**
 
 ```C
 #include <pthread.h>
@@ -72,7 +72,7 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 
 - On peut penser à un mutex comme au verrou de la porte des toilettes. Un thread vient le verrouiller pour indiquer que les toilettes sont occupées. Les autres threads devront alors attendre patiemment que la porte soit déverrouillée avant de pouvoir accéder aux toilettes à leur tour.
 
-## **Comment crée un mutex ?**
+## **Comment créer un mutex ?**
 
 ```C
 int	main(void)
