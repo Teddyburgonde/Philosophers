@@ -116,9 +116,185 @@ int	main(void)
 	return (0);
 }
 ```
+## Comprendre l'importance du mutex 
 
+```c
+void	*print1(void *mutex)
+{
+	int	i;
+	char	str[] = "Hello 42";
 
+	i = 0;
+	pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	write(1, "\n", 1);
+	pthread_mutex_unlock(mutex);
+}
 
+void  *print2(void *mutex)
+{
+	int    i;
+	char  str[] = "Bye 42";
+
+	i = 0;
+	pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	write(1, "\n", 1);
+	pthread_mutex_unlock(mutex);
+}
+
+int  main(void)
+{
+	pthread_t  t1;
+	pthread_t  t2;
+	pthread_mutex_t	mutex;
+
+	pthread_mutex_init(&mutex, NULL);
+	pthread_create(&t1, NULL, print1, &mutex);
+	pthread_create(&t2, NULL, print2, &mutex);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
+	pthread_mutex_destroy(&mutex);
+
+	return (0);
+}
+```
+
+resultat :
+
+```
+Hello 42
+Bye 42%
+```
+
+Maintenant sans utiliser le mutex 
+
+```c
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+
+void	*print1(void *mutex)
+{
+	int	i;
+	char	str[] = "Hello 42";
+
+	i = 0;
+	//pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	printf("\n");
+	//pthread_mutex_unlock(mutex);
+}
+
+void  *print2(void *mutex)
+{
+	int    i;
+	char  str[] = "Bye 42";
+
+	i = 0;
+	//pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	//pthread_mutex_unlock(mutex);
+}
+
+int  main(void)
+{
+	pthread_t  t1;
+	pthread_t  t2;
+	//pthread_mutex_t	mutex;
+
+	//pthread_mutex_init(&mutex, NULL);
+	pthread_create(&t1, NULL, print1, NULL);
+	pthread_create(&t2, NULL, print2, NULL);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
+	//pthread_mutex_destroy(&mutex);
+
+	return (0);
+}
+```
+
+resultat : 
+
+```
+Bye 42Hello 42
+```
+
+et si vous lancez avec valgrind : 
+```
+valgrind --tool=helgrind ./a.out
+```
+Erreur sans mutex : 
+
+```
+==1153466== ---Thread-Announcement------------------------------------------
+==1153466== 
+==1153466== Thread #3 was created
+==1153466==    at 0x499C9F3: clone (clone.S:76)
+==1153466==    by 0x499D8EE: __clone_internal (clone-internal.c:83)
+==1153466==    by 0x490B6D8: create_thread (pthread_create.c:295)
+==1153466==    by 0x490C1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==1153466==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x10938B: main (in /nfs/homes/tebandam/Desktop/training/a.out)
+==1153466== 
+==1153466== ---Thread-Announcement------------------------------------------
+==1153466== 
+==1153466== Thread #2 was created
+==1153466==    at 0x499C9F3: clone (clone.S:76)
+==1153466==    by 0x499D8EE: __clone_internal (clone-internal.c:83)
+==1153466==    by 0x490B6D8: create_thread (pthread_create.c:295)
+==1153466==    by 0x490C1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==1153466==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x10936E: main (in /nfs/homes/tebandam/Desktop/training/a.out)
+==1153466== 
+==1153466== ----------------------------------------------------------------
+==1153466== 
+==1153466== Possible data race during write of size 1 at 0x52A4191 by thread #3
+==1153466== Locks held: none
+==1153466==    at 0x4859796: mempcpy (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x4902664: _IO_new_file_xsputn (fileops.c:1235)
+==1153466==    by 0x4902664: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==1153466==    by 0x48ECFC9: outstring_func (vfprintf-internal.c:239)
+==1153466==    by 0x48ECFC9: __vfprintf_internal (vfprintf-internal.c:1593)
+==1153466==    by 0x48D779E: printf (printf.c:33)
+==1153466==    by 0x1092E3: print2 (in /nfs/homes/tebandam/Desktop/training/a.out)
+==1153466==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x490BAC2: start_thread (pthread_create.c:442)
+==1153466==    by 0x499CA03: clone (clone.S:100)
+==1153466==  Address 0x52a4191 is 1 bytes inside a block of size 1,024 alloc'd
+==1153466==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x48F5BA3: _IO_file_doallocate (filedoalloc.c:101)
+==1153466==    by 0x4904CDF: _IO_doallocbuf (genops.c:347)
+==1153466==    by 0x4903F5F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+==1153466==    by 0x48EE3DB: __vfprintf_internal (vfprintf-internal.c:1517)
+==1153466==    by 0x48D779E: printf (printf.c:33)
+==1153466==    by 0x109245: print1 (in /nfs/homes/tebandam/Desktop/training/a.out)
+==1153466==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==1153466==    by 0x490BAC2: start_thread (pthread_create.c:442)
+==1153466==    by 0x499CA03: clone (clone.S:100)
+==1153466==  Block was alloc'd by thread #2
+==1153466== 
+
+```
+
+Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme temps donc cela pose probleme. 
 
 
 
