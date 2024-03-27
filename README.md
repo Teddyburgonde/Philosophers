@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-🚧 **En construction... Derniere mises a jour 27/03/2024 à 9h26.**
+🚧 **En construction... Derniere mises a jour 28/03/2024 à 00h47.**
 
 ![rleague](https://github.com/Teddyburgonde/Philosophers/assets/93845046/ad7ba6d3-a858-4389-9fec-27c3bcd5bcc7)
 
@@ -313,6 +313,33 @@ Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme tem
 - Elle prends en paramettre le temps en microsecondes. 
 - Comme chaque philosophe(thread) ne peut pas manger en meme temps , cela sert a faire attendre les autres philosophe.
 
+## Input 
+
+Elle doit ressembler a ceci : 
+
+```
+./philosophers 5 800 200 200 7
+- 4 a 5 arguments ( si on ne compte pas le ./a.out) ni plus ni moins. Le dernier argument est facultatif.
+- C'est que des chiffres.
+- Gerer le cas où un argument est vide.
+- tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous)
+
+```
+
+## Analyse de Input 
+
+```
+./philosophers 5 800 200 200 7
+5 — Le nombre de philosophes
+800 — Le moment où un philosophe mourra s'il ne mange pas
+200 — Le temps qu'il faut à un philosophe pour manger
+200 — Le temps qu'il faut à un philosophe pour dormir
+7 Nombre de fois que tous les philosophes doivent manger avant de terminer le programme ** argument facultatif
+```
+
+
+🚧🚧🚧
+	Dans le formulaire d'évaluation, il est indiqué que nous ne devons pas tester avec plus de 200 philos afin que vous puissiez fixer la limite à ne pas dépasser 200.
 
 
 Sources : 
