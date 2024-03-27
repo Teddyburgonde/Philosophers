@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-🚧 **En construction... Derniere mises a jour 26/03/2024 à 16h09.**
+🚧 **En construction... Derniere mises a jour 27/03/2024 à 9h26.**
 
 ![rleague](https://github.com/Teddyburgonde/Philosophers/assets/93845046/ad7ba6d3-a858-4389-9fec-27c3bcd5bcc7)
 
@@ -116,6 +116,13 @@ int	main(void)
 	return (0);
 }
 ```
+
+## **Pourquoi doit t'on détruire un mutex ?**
+
+```
+Quand on crée un mutex on alloue de la mémoire donc pour éviter les fuites de mémoire il faut liberer la mémoire.
+```
+
 ## Comprendre l'importance du mutex 
 
 ```c
@@ -308,100 +315,21 @@ Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme tem
 
 
 
+Sources : 
 
-
-
-
-
+- Introduction to threads -> https://www.youtube.com/watch?v=LOfGJcVnvAk ✅
+- Introduction To Threads (pthreads) -> https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
+- Readme amyplant -> https://github.com/iciamyplant/Philosophers/tree/master ✅
+- Readme de Romain -> https://github.com/Romain-ItAllDepends/Tronc-commun/blob/main/PHILOSOPHERS/README.md ✅
+- Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90 ❌
+- Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 ❌
 
 
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Les fonctions : ✅
-
-- usleep: Met le thread en attente pendant un certain nombre de microsecondes.
-int usleep(useconds_t usec);
-
-
 - gettimeofday: Récupère le temps écoulé depuis l'époque dans une structure timeval.
 int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-
-sem_open: Ouvre ou crée un sémaphore nommé.
-sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
-
-
-sem_close: Ferme un sémaphore.
-int sem_close(sem_t *sem);
-
-
-sem_post: Incrémente la valeur d'un sémaphore.
-int sem_post(sem_t *sem);
-
-
-sem_wait: Décrémente la valeur d'un sémaphore et bloque si la valeur est négative.
-int sem_wait(sem_t *sem);
-
-sem_unlink: Supprime un sémaphore nommé.
-int sem_unlink(const char *name);
-
-
-
-
-Semaphore : ✅    
-
-	Un sémaphore est un mécanisme de synchronisation utilisé dans la programmation multithread et multiprocessus pour contrôler l'accès concurrent à des ressources partagées. Son rôle principal est de réguler l'accès à une ressource partagée entre plusieurs threads ou processus en imposant des règles d'accès.    
-
-
-A faire : 
-
-
-Regarder les 3 videos : ✅
-  - Introduction to threads https://www.youtube.com/watch?v=LOfGJcVnvAk ✅
-  - Introduction To Threads (pthreads) https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
-
-2. regarder la video de Jamshidbek Ergashev ❌
-https://www.youtube.com/watch?v=UGQsvVKwe90
-
-3. Lire le read me de amyplant  ✅
-https://github.com/iciamyplant/Philosophers/tree/master 
-
-4. Lire le Readme de Romain ✅
 
 
 
@@ -419,6 +347,63 @@ Le nombre de fourchette est egal au nombre de philosophes.
 Un processus peut avoir plusieurs threads , une tache pour chaque threads.
 Chaque thread a sa sa pile et ses propres registres.
 Chaque thread a access au code , la data et les fichiers. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Bonus : ✅
+
+sem_open: Ouvre ou crée un sémaphore nommé.
+sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
+
+
+sem_close: Ferme un sémaphore.
+int sem_close(sem_t *sem);
+
+
+sem_post: Incrémente la valeur d'un sémaphore.
+int sem_post(sem_t *sem);
+
+sem_wait: Décrémente la valeur d'un sémaphore et bloque si la valeur est négative.
+int sem_wait(sem_t *sem);
+
+sem_unlink: Supprime un sémaphore nommé.
+int sem_unlink(const char *name);
+
+
+Semaphore : ✅    
+
+	Un sémaphore est un mécanisme de synchronisation utilisé dans la programmation multithread et multiprocessus pour contrôler l'accès concurrent à des ressources partagées. Son rôle principal est de réguler l'accès à une ressource partagée entre plusieurs threads ou processus en imposant des règles d'accès.    
+
+
 
 
 Footer ✅
