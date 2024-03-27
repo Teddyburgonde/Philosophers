@@ -120,7 +120,7 @@ int	main(void)
 ## **Pourquoi doit t'on détruire un mutex ?**
 
 ```
-Quand on crée un mutex on alloue de la mémoire donc pour éviter les fuites de mémoire il faut liberer la mémoire.
+Quand on crée un mutex on alloue de la mémoire donc pour éviter les fuites de mémoire il faut la liberer.
 ```
 
 ## Comprendre l'importance du mutex 
