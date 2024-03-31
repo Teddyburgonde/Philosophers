@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > **En construction** 🚧
-**Dernière mise à jour 31/03/2024 à 17h57.**
+**Dernière mise à jour 31/03/2024 à 18h07.**
 
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :+1:</b></h2>
@@ -429,7 +429,7 @@ Sources :
 - Introduction To Threads (pthreads) -> https://www.youtube.com/watch?v=ldJ8WGZVXZk ✅
 - Readme amyplant -> https://github.com/iciamyplant/Philosophers/tree/master ✅
 - Readme de Romain -> https://github.com/Romain-ItAllDepends/Tronc-commun/blob/main/PHILOSOPHERS/README.md ✅
-- Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90 ❌  20m30
+- Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90 ❌  21m02
 - Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 ✅
 - https://nafuka11.github.io/philosophers-visualizer/ ❌
 
