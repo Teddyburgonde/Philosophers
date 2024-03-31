@@ -370,6 +370,12 @@ Le philo dort -> utiliser ft_usleep et print "X is sleeping"
 Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourchette gauche print "X is eating"
 Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
 
+🚧🚧
+
+Le thread s'arrete quand un philo meurt ou que tout les philo on manger la quantité de repas dont ils ont besoin. 
+
+
+
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 Sources : 
@@ -379,7 +385,7 @@ Sources :
 - Readme amyplant -> https://github.com/iciamyplant/Philosophers/tree/master ✅
 - Readme de Romain -> https://github.com/Romain-ItAllDepends/Tronc-commun/blob/main/PHILOSOPHERS/README.md ✅
 - Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90 ❌
-- Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 ❌
+- Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 ✅
 
 
 
@@ -404,32 +410,6 @@ Le nombre de fourchette est egal au nombre de philosophes.
 Un processus peut avoir plusieurs threads , une tache pour chaque threads.
 Chaque thread a sa sa pile et ses propres registres.
 Chaque thread a access au code , la data et les fichiers. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
