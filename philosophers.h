@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/03/27 10:20:32 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/03/31 12:38:20 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 # include <unistd.h>
 
 void	ft_putstr_fd(char *s, int fd);
+int		ft_atoi(const char *nptr);
 
 #endif 

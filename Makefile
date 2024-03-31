@@ -13,6 +13,7 @@ LDFLAGS = -lpthread
 #============= MANDATORY SOURCES =============#
 
 SRCS = error.c \
+		utils_for_parsing.c \
 		main.c 
 
 
