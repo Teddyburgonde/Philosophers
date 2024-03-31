@@ -1,8 +1,9 @@
 > [!IMPORTANT]
 🚧 **En construction... Derniere mises a jour 31/03/2024 à 17h10.**
-
-# **Philosophers**
-
+<p align="center">
+	# **Philosophers**
+	## **Guide pas à pas**
+</p>
 <p align="center">
 	<img src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/87d4052f-671f-42fa-a379-2d2268b7ae75" alt="diner" />
 </p>
