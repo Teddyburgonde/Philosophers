@@ -1,13 +1,9 @@
 > [!IMPORTANT]
 🚧 **En construction... Derniere mises a jour 31/03/2024 à 17h10.**
 
-![rleague](https://github.com/Teddyburgonde/Philosophers/assets/93845046/ad7ba6d3-a858-4389-9fec-27c3bcd5bcc7)
-
-Vous trouvez que les voitures de Rocket league vont vite ?
-
-Lisez mon README et vous terminerez si vite votre projet que vous aurez l'impression que les voitures de Rocket league sont lente :)
-
 # **Philosophers**
+
+![diner_philosophe](https://github.com/Teddyburgonde/Philosophers/assets/93845046/4975204a-dc6d-4c8f-8128-24e7ff0d03c5)
 
 ## **C'est quoi un thread ?**
 
