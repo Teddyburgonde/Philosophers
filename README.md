@@ -338,8 +338,37 @@ Errors :
 - tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous) sinon error.
 - Si argv[1] est suppérieur à 200 , error.
 ```
+## Etape 2 : Création des structures 
 
+Dans le sujet on nous dit qu'il faut :
+number_of_philosophers
+time_to_die time_to_eat
+time_to_sleep
+number_of_times_each_philosopher_must_eat
+🚧🚧🚧🚧🚧🚧
+```c
+typedef struct{
+	// pthread_t		thread;
 
+	// Chaque philosophe possède un numéro allant de 1 ànombre_de_philosophes.
+	int	number_of_philosophers;
+	int number_of_times_each_philosopher_must_eat;
+	size_t	time_to_die;
+	size_t	time_to_eat;
+	size_t	time_to_sleep;
+	//pthread_mutex_t	*r_fork;
+	//pthread_mutex_t	*l_fork;
+	
+} t_philo;
+```
+
+Créé une boucle qui se brisera dès que le drapeau mort sera à 1, autrement dit dès qu'un philo sera mort.
+
+Dans la boucle qui mangerons , dormirons et penserons.
+Le philo pense -> print “X is thinking” (X is the philo number)
+Le philo dort -> utiliser ft_usleep et print "X is sleeping"
+Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourchette gauche print "X is eating"
+Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
