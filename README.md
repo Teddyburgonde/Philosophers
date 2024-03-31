@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-🚧 **En construction... Derniere mises a jour 28/03/2024 à 00h47.**
+🚧 **En construction... Derniere mises a jour 31/03/2024 à 14h01.**
 
 ![rleague](https://github.com/Teddyburgonde/Philosophers/assets/93845046/ad7ba6d3-a858-4389-9fec-27c3bcd5bcc7)
 
@@ -338,6 +338,10 @@ Errors :
 - tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous) sinon error.
 - Si argv[1] est suppérieur à 200 , error.
 ```
+
+
+
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 Sources : 
 
