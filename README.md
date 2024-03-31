@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> En construction 🚧
+> **En construction** 🚧
 **Dernière mise à jour 31/03/2024 à 17h57.**
 
 <h1 align="center"><b>Philosophers</b></h1>
