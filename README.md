@@ -4,7 +4,7 @@
 # **Philosophers**
 
 <p align="center">
-	<img src="![diner](https://github.com/Teddyburgonde/Philosophers/assets/93845046/87d4052f-671f-42fa-a379-2d2268b7ae75)" />
+	<img src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/87d4052f-671f-42fa-a379-2d2268b7ae75" alt="diner" />
 </p>
 
 ## **C'est quoi un thread ?**
