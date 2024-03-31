@@ -313,18 +313,7 @@ Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme tem
 - Elle prends en paramettre le temps en microsecondes. 
 - Comme chaque philosophe(thread) ne peut pas manger en meme temps , cela sert a faire attendre les autres philosophe.
 
-## Input 
-
-Elle doit ressembler a ceci : 
-
-```
-./philosophers 5 800 200 200 7
-- 4 a 5 arguments ( si on ne compte pas le ./a.out) ni plus ni moins. Le dernier argument est facultatif.
-- C'est que des chiffres.
-- Gerer le cas où un argument est vide.
-- tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous)
-
-```
+## Etape 1 : Parsing
 
 ## Analyse de Input 
 
@@ -337,10 +326,18 @@ Elle doit ressembler a ceci :
 7 Nombre de fois que tous les philosophes doivent manger avant de terminer le programme ** argument facultatif
 ```
 
-
-🚧🚧🚧
-	Dans le formulaire d'évaluation, il est indiqué que nous ne devons pas tester avec plus de 200 philos afin que vous puissiez fixer la limite à ne pas dépasser 200.
-
+Un Input correct doit ressembler a ceci : 
+```
+./philosophers 5 800 200 200 7
+```
+Errors :
+```
+- On doit avoir entre 4 a 5 arguments ( si on ne compte pas le ./a.out) ni plus ni moins. (Le dernier argument est facultatif) sinon error.
+- C'est que des chiffres , sinon error.
+- Si l'argument est vide "" , error.
+- tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous) sinon error.
+- Si argv[1] est suppérieur à 200 , error.
+```
 
 Sources : 
 
