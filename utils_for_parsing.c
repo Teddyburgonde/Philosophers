@@ -6,10 +6,16 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:37:34 by tebandam          #+#    #+#             */
-/*   Updated: 2024/03/31 12:39:42 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/03/31 13:39:52 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 static int	is_whitespace(char c)
 {
