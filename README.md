@@ -3,7 +3,7 @@
 
 # **Philosophers**
 
-![diner_philosophe](https://github.com/Teddyburgonde/Philosophers/assets/93845046/4975204a-dc6d-4c8f-8128-24e7ff0d03c5)
+![diner](https://github.com/Teddyburgonde/Philosophers/assets/93845046/87d4052f-671f-42fa-a379-2d2268b7ae75)
 
 ## **C'est quoi un thread ?**
 
