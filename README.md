@@ -307,11 +307,48 @@ Erreur sans mutex :
 
 Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme temps donc cela pose probleme. 
 
-## Mettre en attente un programme avec usleep 
+## gettimeofday
 
+Il affiche le temps écoulé depuis le 01/01/1970(l'époque Unix) à maintenant. 
+
+```c
+void	example_1()
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL))
+		return ;
+	printf("%ld seconds\n", time.tv_sec);
+	printf("%ld microseconds\n", time.tv_usec);
+}
+int	main()
+{
+	example_1();
+}
+```
+
+
+## ft _usleep
+
+- Comme chaque philosophe(thread) ne peut pas manger en meme temps , cela sert a faire attendre les autres philosophe.
 - usleep return 0 en cas de success et -1 en cas d'erreur.
 - Elle prends en paramettre le temps en microsecondes. 
-- Comme chaque philosophe(thread) ne peut pas manger en meme temps , cela sert a faire attendre les autres philosophe.
+
+On doit coder son propre usleep pour avoir un temps plus précis :
+
+```c
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
+```
+
+
 
 ## Etape 1 : Parsing
 
@@ -362,19 +399,18 @@ typedef struct{
 } t_philo;
 ```
 
-Créé une boucle qui se brisera dès que le drapeau mort sera à 1, autrement dit dès qu'un philo sera mort.
+Créé une boucle : 
 
-Dans la boucle qui mangerons , dormirons et penserons.
+```
+- qui se brisera dès que le drapeau mort sera à 1 (un philo est mort).
+- Ils mangerons.
+- Ils dormirons.
+- Ils penserons.
 Le philo pense -> print “X is thinking” (X is the philo number)
 Le philo dort -> utiliser ft_usleep et print "X is sleeping"
 Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourchette gauche print "X is eating"
 Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
-
-🚧🚧
-
-Le thread s'arrete quand un philo meurt ou que tout les philo on manger la quantité de repas dont ils ont besoin. 
-
-
+```
 
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
@@ -388,60 +424,5 @@ Sources :
 - Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 ✅
 
 
-
-🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
-
-- gettimeofday: Récupère le temps écoulé depuis l'époque dans une structure timeval.
-int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-
-
-Divers : 
-
-Un Philosophe peut faire trois choses :  
-  - Manger
-  - Dormir
-  - Penser
-
-Pour manger il doit choisir deux fourchettes (celle devant lui et une autre a sa droite ou a sa gauche.
-Le nombre de fourchette est egal au nombre de philosophes.
-
-
-Un processus peut avoir plusieurs threads , une tache pour chaque threads.
-Chaque thread a sa sa pile et ses propres registres.
-Chaque thread a access au code , la data et les fichiers. 
-
-
-
-
-
-
-## Bonus : ✅
-
-sem_open: Ouvre ou crée un sémaphore nommé.
-sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
-
-
-sem_close: Ferme un sémaphore.
-int sem_close(sem_t *sem);
-
-
-sem_post: Incrémente la valeur d'un sémaphore.
-int sem_post(sem_t *sem);
-
-sem_wait: Décrémente la valeur d'un sémaphore et bloque si la valeur est négative.
-int sem_wait(sem_t *sem);
-
-sem_unlink: Supprime un sémaphore nommé.
-int sem_unlink(const char *name);
-
-
-Semaphore : ✅    
-
-	Un sémaphore est un mécanisme de synchronisation utilisé dans la programmation multithread et multiprocessus pour contrôler l'accès concurrent à des ressources partagées. Son rôle principal est de réguler l'accès à une ressource partagée entre plusieurs threads ou processus en imposant des règles d'accès.    
-
-
-
-
-Footer ✅
-Page Tean : ❌
+✅
+❌
