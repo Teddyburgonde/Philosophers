@@ -1,11 +1,7 @@
 > [!IMPORTANT]
-> en construction
+> en construction 
+Dernière mise à jour 31/03/2024 à 17h26.**
 
-<p align="center">
-	> [!IMPORTANT]
-	> en construction
-  Dernière mise à jour 31/03/2024 à 17h10.**
-</p>
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :)</b></h2>
 
