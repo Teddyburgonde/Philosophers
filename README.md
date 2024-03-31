@@ -412,6 +412,15 @@ Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourch
 Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
 ```
 
+## Visualizer
+
+```
+https://nafuka11.github.io/philosophers-visualizer/
+```
+Deux philosophes ne doivent pas manger en même temps :
+
+![Screenshot from 2024-03-31 18-01-29](https://github.com/Teddyburgonde/Philosophers/assets/93845046/8194a3f9-a9db-41c3-bec5-cfdbdb336907)
+
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 Sources : 
