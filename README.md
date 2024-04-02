@@ -421,7 +421,6 @@ Deux philosophes ne doivent pas manger en même temps :
 
 ![Screenshot from 2024-03-31 18-01-29](https://github.com/Teddyburgonde/Philosophers/assets/93845046/8194a3f9-a9db-41c3-bec5-cfdbdb336907)
 
-🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 Sources : 
 
