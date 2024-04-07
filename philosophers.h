@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/04 18:46:18 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/07 12:03:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # define EMPTY '\0'
 
 
+
 typedef struct {
-	int	id_fork;
-	pthread_mutex_t *is_fork_used;
-} t_fork;
+	int	id_chopstick;
+	pthread_mutex_t *is_chopstick_used;
+} t_chopstick;
 
 
 
@@ -32,7 +33,9 @@ typedef struct {
 	size_t	time_to_die;
 	size_t	time_to_eat;
 	size_t	time_to_sleep;
-	
+	int		is_dead;
+	long int	start;
+	t_chopstick		*forks;
 } t_prog;
 
 
@@ -40,11 +43,10 @@ typedef struct {
 
 
 typedef struct {
-	int	id_philo;
-	t_fork *right_fork;
-	t_fork *left_fork;
-	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*left_fork;
+	t_prog		*data;
+	int			id_philo;
+	t_chopstick *left_chopstick;
+	t_chopstick	*right_chopstick;
 } t_philo;
 
 
