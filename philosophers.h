@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/07 12:03:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/07 16:55:00 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ typedef struct {
 	size_t	time_to_sleep;
 	int		is_dead;
 	long int	start;
-	t_chopstick		*forks;
+	t_chopstick		*chopstick;
 } t_prog;
 
 
 
-
-
-typedef struct {
+typedef struct s_philo{
 	t_prog		*data;
 	int			id_philo;
 	t_chopstick *left_chopstick;
@@ -51,47 +49,6 @@ typedef struct {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// typedef struct{
-// 	// pthread_t		thread;
-
-// 	// Chaque philosophe possède un numéro allant de 1 ànombre_de_philosophes.
-	
-// } t_philo;
-
-// typedef struct{
-// 	int dead_flag;
-// } t_prog;
-// Créé une boucle qui se brisera dès que le drapeau mort sera à 1, autrement dit dès qu'un philo sera mort.
 
 void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *nptr);
