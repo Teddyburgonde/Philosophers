@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/14 15:02:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/14 15:04:17 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char **argv)
 
 	if (validate_arguments(argv) == 1)
 		return (1);
-	incorrect_number_arguments(argc);
+	if (incorrect_number_arguments(argc) == 1)
+		return (1);
 	data = malloc(sizeof(t_prog));
 	if (!data)
 		return (1);
