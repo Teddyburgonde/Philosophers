@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 15:18:25 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/14 16:30:03 by tebandam         ###   ########.fr       */
+/*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
+/*   Updated: 2024/04/14 16:34:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	initialize_philosopher(t_philo *philo, t_prog *data, int index)
+size_t	get_current_time(void)
 {
-	philo[index].id_philo = index + 1;
-	philo[index].data = data;
-	philo[index].left_chopstick = &data->chopstick[index];
-	if (philo[index].id_philo == data->number_of_philosophers)
-		philo[index].left_chopstick = &data->chopstick[0];
-	else
-		philo[index].left_chopstick = &data->chopstick[index + 1];
-	index++;
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
 }

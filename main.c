@@ -6,11 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/14 15:20:16 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/14 16:27:45 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {

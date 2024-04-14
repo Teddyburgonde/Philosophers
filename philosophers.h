@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/14 15:19:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/14 16:33:40 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,31 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <sys/time.h>
 # define EMPTY '\0'
 
+typedef struct s_chopstick{
+	int				id_chopstick;
+	pthread_mutex_t	*is_chopstick_used;
+}	t_chopstick;
 
-
-typedef struct {
-	int	id_chopstick;
-	pthread_mutex_t *is_chopstick_used;
-} t_chopstick;
-
-
-
-typedef struct {
-	int	number_of_philosophers;
-	int number_of_times_each_philosopher_must_eat;
-	size_t	time_to_die;
-	size_t	time_to_eat;
-	size_t	time_to_sleep;
-	int		is_dead;
-	long int	start;
+typedef struct s_prog{
+	int				number_of_philosophers;
+	int				number_of_times_each_philosopher_must_eat;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	int				is_dead;
+	long int		start;
 	t_chopstick		*chopstick;
-} t_prog;
-
-
+}	t_prog;
 
 typedef struct s_philo{
 	t_prog		*data;
 	int			id_philo;
-	t_chopstick *left_chopstick;
+	t_chopstick	*left_chopstick;
 	t_chopstick	*right_chopstick;
-} t_philo;
-
-
-
+}	t_philo;
 
 void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *nptr);
@@ -57,5 +49,7 @@ int		validate_arguments(char **argv);
 int		ft_isdigit(int c);
 int		incorrect_number_arguments(int argc);
 void	initialize_philosopher(t_philo *philo, t_prog *data, int index);
+size_t	get_current_time(void);
+int		ft_usleep(size_t milliseconds);
 
 #endif 

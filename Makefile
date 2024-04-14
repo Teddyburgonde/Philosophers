@@ -16,6 +16,7 @@ SRCS = error.c \
 		utils_for_parsing.c \
 		parsing_number.c \
 		initialize.c \
+		time.c \
 		main.c 
 
 
