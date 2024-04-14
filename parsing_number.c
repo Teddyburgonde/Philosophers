@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 13:01:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/03/31 13:42:36 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:34:40 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,15 @@ int	validate_arguments(char **argv)
 {
 	if ((check_is_number(argv) == 1) || (check_is_number_valid(argv) == 1))
 		return (1);
+	return (0);
+}
+
+int	incorrect_number_arguments(int argc)
+{
+	if (argc < 5 || argc > 6)
+	{
+		ft_putstr_fd("Error\nNumber of arguments is wrong\n", 2);
+		return (1);
+	}
 	return (0);
 }
