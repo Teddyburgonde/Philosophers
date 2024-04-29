@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/29 09:51:05 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:28:04 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdio.h>
+
 # define EMPTY '\0'
 
 typedef struct s_chopstick{
