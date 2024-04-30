@@ -6,12 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/29 18:37:22 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/04/30 10:09:14 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
+#include <pthread.h>
 
 /*
 
@@ -27,25 +27,42 @@ Voici une approche générale que vous pourriez prendre :
 
 // penser, manger et dormir.
 
+// je suis a verouiller un mutex
+// pthread_mutex_destroy(&nameofmutex);
 void	*ft_routine(void *arg)
 {
 	t_philo *philo;
 	size_t	i;
+	t_chopstick *left_chopstick; 
+	t_chopstick *right_chopstick;
+	pthread_mutex_t	mutex_philosopher;
+
+	pthread_mutex_init(&mutex_philosopher, NULL);
+	left_chopstick = 0;
+	right_chopstick = 0;
 	i = 0;
-	
 	philo = (t_philo *)arg;
 	while (i < philo->t_data->number_of_philosophers)
 	{
-		
 		philo[i].id_philo = i + 1;
 		i++;
 	}
 	while(1)
 	{
-		printf("Philosopher thinking.\n", philo->id_philo);
-		printf("Philosopher waits before taking the chopsticks.\n", philo->id_philo);
-		printf("Philosopher eating.\n", philo->id_philo);
-		printf("Philosopher sleeping.\n", philo->id_philo);
+		printf("Philosopher thinking.\n");
+		printf("Philosopher waits before taking the chopsticks.\n");
+		if ((philo->left_chopstick->is_chopstick_used && philo->right_chopstick->is_chopstick_used) == 0)
+		{
+			pthread_mutex_lock(&mutex_philosopher);
+			printf("Philosopher eating.\n");
+			pthread_mutex_unlock(&mutex_philosopher);
+		}
+		else 
+		{
+			printf("Philosopher thinking.\n");
+			printf("Philosopher waits before taking the chopsticks.\n");
+		}
+		printf("Philosopher sleeping.\n");
 	}
 	return (NULL);
 }
