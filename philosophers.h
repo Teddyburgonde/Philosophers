@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/29 18:28:04 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/03 21:29:05 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,37 @@
 
 # define EMPTY '\0'
 
-typedef struct s_chopstick{
-	int				id_chopstick;
-	pthread_mutex_t	*is_chopstick_used;
-}	t_chopstick;
+typedef struct s_fork{
+	int	mutex_taken;
+	pthread_mutex_t	fork_mutex;
+}	t_fork;
 
 typedef struct s_data{
-	int				number_of_philosophers;
-	int				number_of_times_each_philosopher_must_eat;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
-	int				is_dead;
-	long int		start;
-	t_chopstick		*chopstick;
+	t_fork *fork;
+	//
+	//
+	// 
+	long int	start;
+	int	time_philosopher_takes_to_eat;
+	int	is_dead;
+	int	id_fork;
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	pthread_mutex_t		printf_mutex;
 }	t_data;
 
 typedef struct s_philo{
-	t_data		*t_data;
+	
+	t_data		*data;
 	int			id_philo;
-	t_chopstick	*left_chopstick;
-	t_chopstick	*right_chopstick;
+	//
+	//
+	//
+	int			nb_fork;
+	t_fork	*left_fork;
+	t_fork	*right_fork;
 }	t_philo;
 
 void	ft_putstr_fd(char *s, int fd);
