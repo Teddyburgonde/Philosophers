@@ -6,51 +6,30 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/07 19:46:47 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:59:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-
-
-t_philo	*initialization_philo(void)
+void	initialization_philo(t_data *data)
 {
-	t_philo	*philo;
+	int	i;
 
-	philo = malloc( sizeof(t_philo));
-	if (philo == NULL)
-		return (NULL);
-	philo->id_philo = 0;
-	philo->nb_fork = 0;
-	philo->last_time_eaten = 0;
-	philo->thread_id = 0;
-	philo->left_fork = NULL;
-	philo->right_fork = NULL;
-	philo->data = NULL;
-	return (philo);
+	i = 0;
+	while (i < data->number_of_philosophers)
+	{
+		data->philo[i].data = data; 
+		data->philo[i].id_philo = i + 1;
+		data->philo[i].last_time_eaten = data->is_dead;
+		data->philo[i].eat_cont = 0;
+		data->philo[i].eating = 0;
+		data->philo[i].status = 0;
+		pthread_mutex_init(&data->philo->lock, NULL);
+		i++;
+		//pthread_mutex_init(&data->philo[i].left_fork, NULL);
+		//pthread_mutex_init(&data->philo[i].right_fork, NULL);
+	}
 }
 
-// t_data	*initialization_data(void)
-// {
-// 	t_data *data;
-	
-// 	data = malloc(data->number_of_philosophers * sizeof(t_data));
-// 	if (data == NULL)
-// 		return (NULL);
-// 	if (pthread_mutex_init(&data->printf_mutex, NULL) != 0 
-// 		|| pthread_mutex_init(&data->is_dead_mutex, NULL) != 0)
-// 	{
-// 		free(data); 
-// 		return (NULL);
-// 	}
-// 	data->start = 0;
-// 	data->time_philosopher_takes_to_eat = 0;
-// 	data->is_dead = 0;
-// 	data->id_fork = 0;
-// 	data->number_of_philosophers = 0;
-// 	data->time_to_die = 0;
-// 	data->time_to_eat = 0;
-// 	data->time_to_sleep = 0;
-// 	return (data);
-// }
+// initialization data 

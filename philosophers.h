@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/07 19:40:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:00:38 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@
 // 	pthread_mutex_t	write;
 // }	t_data;
 
+// a revoir 
 typedef struct s_data{
 	pthread_mutex_t		is_dead_mutex;
 	int	number_of_philosophers;
 	int	meals_nb;
 	int	is_dead;
 	//int finished;
-	//t_philo	*philos; 
+	t_philo	*philo; 
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
@@ -59,11 +60,11 @@ typedef struct s_philo{
 	t_data				*data;
 	pthread_t			thread_id;
 	int					id_philo;
-	//int					eat_cont;
-	//int					status;
-	//int					eating;
+	int					eat_cont;
+	int					status;
+	int					eating;
 	long int			last_time_eaten;
-	//pthread_mutex_t	lock; 
+	pthread_mutex_t	lock; 
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }	t_philo;
@@ -76,10 +77,8 @@ int		ft_isdigit(int c);
 int		incorrect_number_arguments(int argc);
 int		ft_routine(t_philo *philo);
 int		ft_usleep(size_t milliseconds);
-void	initialize_philosopher(t_philo *philo, t_data *data, int index);
+void	initialization_philo(t_data *data);
 void	ft_putstr_fd(char *s, int fd);
 size_t	get_current_time(void);
-t_philo	*initialization_philo(void);
-t_data	*initialization_data(void);
 
 #endif 
