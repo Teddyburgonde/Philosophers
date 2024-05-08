@@ -14,6 +14,7 @@ LDFLAGS = -lpthread
 
 SRCS = error.c \
 		utils_for_parsing.c \
+		initialization.c \
 		parsing_number.c \
 		philo_is_dead.c \
 		routine.c \

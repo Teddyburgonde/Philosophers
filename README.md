@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > **En construction** 🚧
-**Dernière mise à jour 08/05/2024 à 10h00.**
+**Dernière mise à jour 03/03/2024 à 00h06.**
 
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :+1:</b></h2>
@@ -9,12 +9,17 @@
 	<img src="https://github.com/Teddyburgonde/Philosophers/assets/93845046/87d4052f-671f-42fa-a379-2d2268b7ae75" alt="diner" />
 </p>
 
-## Différences entre programme , processus et thread ?
+## **C'est quoi un thread ?**
 
-- Un programme est une suite d'nstructions que le developpeur dit à l'ordinateur de faire.
-- Le processus c'est l'exécution du programme.
-- Les threads c'est les actions et l'avantage avec les threads c'est qu'on peut faire plusieurs actions à la fois,
-cela permet de gagner en rapidité , en fluidité , gere mieux utilisation de la mémoire ...etc.
+- Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
+- Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
+
+- Un thread est composé de :
+  
+  	- Un id
+	- Un compteur
+	- Un ensemble de registre
+ 	- Une stack 
 
 ## **Comment créer un thread ?**
 
@@ -113,12 +118,135 @@ int	main(void)
 ```
 
 ## **Pourquoi doit t'on détruire un mutex ?**
-- Pour éviter les leaks. 
 
-## L'importance des mutex ! 
+```
+Quand on crée un mutex on alloue de la mémoire donc pour éviter les fuites de mémoire il faut la liberer.
+```
 
-- Si on ne creer pas de mutex les deux thread vont par exemple vouloir écrire en meme temps dans la mémoire
-et cela provoque des data races. 
+## Comprendre l'importance du mutex 
+
+```c
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+
+void	*print1(void *mutex)
+{
+	int	i;
+	char	str[] = "Hello 42";
+
+	i = 0;
+	pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	printf("\n");
+	pthread_mutex_unlock(mutex);
+}
+
+void  *print2(void *mutex)
+{
+	int    i;
+	char  str[] = "Bye 42";
+
+	i = 0;
+	pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	pthread_mutex_unlock(mutex);
+}
+
+int  main(void)
+{
+	pthread_t  t1;
+	pthread_t  t2;
+	pthread_mutex_t	mutex;
+
+	pthread_mutex_init(&mutex, NULL);
+	pthread_create(&t1, NULL, print1, &mutex);
+	pthread_create(&t2, NULL, print2,  &mutex);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
+	pthread_mutex_destroy(&mutex);
+
+	return (0);
+}
+```
+
+resultat :
+
+```
+Hello 42
+Bye 42%
+```
+
+Maintenant sans utiliser le mutex 
+
+```c
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+
+void	*print1(void *mutex)
+{
+	int	i;
+	char	str[] = "Hello 42";
+
+	i = 0;
+	//pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	printf("\n");
+	//pthread_mutex_unlock(mutex);
+}
+
+void  *print2(void *mutex)
+{
+	int    i;
+	char  str[] = "Bye 42";
+
+	i = 0;
+	//pthread_mutex_lock(mutex);
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		i++;
+	}
+	//pthread_mutex_unlock(mutex);
+}
+
+int  main(void)
+{
+	pthread_t  t1;
+	pthread_t  t2;
+	//pthread_mutex_t	mutex;
+
+	//pthread_mutex_init(&mutex, NULL);
+	pthread_create(&t1, NULL, print1, NULL);
+	pthread_create(&t2, NULL, print2, NULL);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
+	//pthread_mutex_destroy(&mutex);
+
+	return (0);
+}
+```
+
+resultat : 
+
+```
+Bye 42Hello 42
+```
 
 et si vous lancez avec valgrind : 
 ```
@@ -250,57 +378,39 @@ Errors :
 ## Etape 2 : Création des structures 
 
 Dans le sujet on nous dit qu'il faut :
-
 number_of_philosophers
 time_to_die time_to_eat
 time_to_sleep
 number_of_times_each_philosopher_must_eat
-
-Voici mon .h
-
+🚧🚧🚧🚧🚧🚧
 ```c
-typedef struct s_data{
-	pthread_mutex_t		is_dead_mutex;
-	int	number_of_philosophers;
-	int	meals_nb;
-	int	is_dead;
-	//int finished;
-	t_philo	*philo; 
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	start_time;
-	pthread_mutex_t		*forks;
-	pthread_mutex_t		lock;
-	pthread_mutex_t		printf_mutex;
-}	t_data;
+typedef struct{
+	// pthread_t		thread;
 
-typedef struct s_philo{
+	// Chaque philosophe possède un numéro allant de 1 ànombre_de_philosophes.
+	int	number_of_philosophers;
+	int number_of_times_each_philosopher_must_eat;
+	size_t	time_to_die;
+	size_t	time_to_eat;
+	size_t	time_to_sleep;
+	//pthread_mutex_t	*r_fork;
+	//pthread_mutex_t	*l_fork;
 	
-	t_data				*data;
-	pthread_t			thread_id;
-	int					id_philo;
-	int					eat_cont;
-	int					status;
-	int					eating;
-	long int			last_time_eaten;
-	pthread_mutex_t	lock; 
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
-}	t_philo;
+} t_philo;
 ```
 
-## Etape 3 : Initialisation des structures 
+Créé une boucle : 
 
-🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 EN CONSTRUCTION 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
-
-## Etape 4 : La routine des philosphers 
-
-- Ils mangent
-- ils dorments
-etc... 
-
-
+```
+- qui se brisera dès que le drapeau mort sera à 1 (un philo est mort).
+- Ils mangerons.
+- Ils dormirons.
+- Ils penserons.
+Le philo pense -> print “X is thinking” (X is the philo number)
+Le philo dort -> utiliser ft_usleep et print "X is sleeping"
+Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourchette gauche print "X is eating"
+Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
+```
 
 ## Visualizer
 
@@ -325,4 +435,6 @@ Sources :
 - https://nafuka11.github.io/philosophers-visualizer/ 
 
 
+🚧
+1. Faire dormir les philosophers / 2 ?
 
