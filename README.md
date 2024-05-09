@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > **En construction** 🚧
-**Dernière mise à jour 03/03/2024 à 00h06.**
+**Dernière mise à jour 09/05/2024 à 16h15.**
 
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :+1:</b></h2>
