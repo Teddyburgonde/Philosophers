@@ -6,39 +6,29 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 17:23:18 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/09 22:05:58 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include <pthread.h>
 
-
-void	ft_sleep(t_philo *philo)
+void ft_sleep(t_philo *philo)
 {
-	long int	start_to_eat;
-	
-	start_to_eat = get_current_time();
+	long int start_to_sleep;
 	if (philo->data->is_dead == 1)
-		return ;
+		return;
+	start_to_sleep = get_current_time();
 	pthread_mutex_lock(&philo->data->printf_mutex);
-	printf("At {%lu} the philosopher %d falls asleep\n", start_to_eat, philo->id_philo);
+	printf("At {%lu} the philosopher %d falls asleep\n", start_to_sleep, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
+	while (ft_usleep(philo->data->start_time) - start_to_sleep < philo->data->time_to_sleep) 
+	{
+		if (philo->data->is_dead == 1)
+			return ;
+		ft_usleep(5000000);
+	}
 }
-
-	
-// ! Routine sleep 
-
-// int	ft_sleep_routine(t_data *data)
-// {
-// 	pthread_mutex_lock(&data->printf_mutex);
-// 	//! dans le printf il faut ajouter le time et id du philo
-// 	//! 	printf("{%ld} | %d is sleeping\n", ((abso((philo->arg->time_start.tv_usec / 1000) - (philo->time_now.tv_usec / 1000))) +
-// 	//! abso((philo->arg->time_start.tv_sec * 1000) - (philo->time_now.tv_sec * 1000))), 
-// 	printf("Philosophising is sleeping\n");
-// 	pthread_mutex_unlock(&data->printf_mutex);
-// }
-
 
 // int	ft_routine_eat(t_philo *philo)
 // {
