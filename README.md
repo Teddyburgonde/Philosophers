@@ -11,15 +11,7 @@
 
 ## **C'est quoi un thread ?**
 
-- Un thread est une suite logique d'instructions qui peuvent être exécutées simultanément avec d'autres threads sur un processeur.
 - Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
-
-- Un thread est composé de :
-  
-  	- Un id
-	- Un compteur
-	- Un ensemble de registre
- 	- Une stack 
 
 ## **Comment créer un thread ?**
 
@@ -348,8 +340,6 @@ int	ft_usleep(size_t milliseconds)
 }
 ```
 
-
-
 ## Etape 1 : Parsing
 
 ## Analyse de Input 
@@ -377,31 +367,72 @@ Errors :
 ```
 ## Etape 2 : Création des structures 
 
-Dans le sujet on nous dit qu'il faut :
-number_of_philosophers
-time_to_die time_to_eat
-time_to_sleep
-number_of_times_each_philosopher_must_eat
-🚧🚧🚧🚧🚧🚧
-```c
-typedef struct{
-	// pthread_t		thread;
+Voila ma structure : 
 
-	// Chaque philosophe possède un numéro allant de 1 ànombre_de_philosophes.
+typedef struct s_fork{
+	int	mutex_id;
+	pthread_mutex_t fork_mutex;
+}t_fork;
+
+typedef struct s_data{
 	int	number_of_philosophers;
-	int number_of_times_each_philosopher_must_eat;
-	size_t	time_to_die;
-	size_t	time_to_eat;
-	size_t	time_to_sleep;
-	//pthread_mutex_t	*r_fork;
-	//pthread_mutex_t	*l_fork;
-	
-} t_philo;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	time_philo_must_eat;
+	int	is_dead;
+	int	philo_satiated;
+	long int	start_time;
+	t_fork	*forks;
+	pthread_mutex_t		is_dead_mutex;
+	pthread_mutex_t		philo_satiated_mutex;
+	pthread_mutex_t		printf_mutex;
+}	t_data;
+
+typedef struct s_philo{
+	t_data				*data;
+	int					id_philo;
+	int					nb_meals_eaten;
+	int					nb_forks;
+	long int			last_time_eaten;
+	pthread_t			thread_id;
+	t_fork	*left_fork;
+	t_fork	*right_fork;
+}	t_philo;
+
+## Etape 3 : Initialisation des structures 
+Pour philo
+
+```c
+int initialization_philo(t_philo *philo, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophers)
+	{	
+		philo[i].data = data;
+		philo[i].id_philo = i + 1;
+		philo[i].nb_meals_eaten = 0;
+		philo[i].nb_forks = 0;
+		philo[i].last_time_eaten = data->is_dead;
+		philo[i].left_fork = &data->forks[i];
+		if (philo[i].id_philo == data->number_of_philosophers)
+			philo[i].right_fork = &data->forks[0];
+		else
+			philo[i].right_fork = &data->forks[i + 1];
+		i++;
+	}
+	return (0);
+}
 ```
+Je vous laisse le faire aussi pour data.
+
+## Etape 4 : Les routines  
 
 Créé une boucle : 
 
-```
+```c
 - qui se brisera dès que le drapeau mort sera à 1 (un philo est mort).
 - Ils mangerons.
 - Ils dormirons.
