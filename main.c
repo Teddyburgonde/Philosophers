@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 16:04:22 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:22:35 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ int	main(int argc, char **argv)
 		free(data.forks);
 		return (1);
 	}
+	ft_sleep(philo);
 	free(philo);
 	free(data.forks);
-	
-	//ft_sleep(philo);
 
 	//! Si le philosophe n'est pas mort on peut faire la routine 
 	
