@@ -6,14 +6,31 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 21:16:46 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/09 22:26:20 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-#include <stdlib.h>
 
 //! philosophers 5 800 200 200 7
+
+/*
+! 1. Initialisation structure 
+? ok.
+! 2. Parsing 
+? ok.
+! 3. Crée une fonction pour un temps plus précis
+? ok.
+! 4. Crée une fonction pour voir si le philosophers est mort
+? ok.
+! 4. Routine sleep
+
+! 5. Routine think
+? ok.
+! 6. Routine eat 
+! 7. test 
+*/
+
 
 int	main(int argc, char **argv)
 {
@@ -40,6 +57,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_sleep(philo);
+	
 	free(philo);
 	free(data.forks);
 

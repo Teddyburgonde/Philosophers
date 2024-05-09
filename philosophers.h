@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 17:23:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/09 22:24:48 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,42 @@ typedef struct s_philo{
 	t_fork	*right_fork;
 }	t_philo;
 
+
+/*
+* Utils
+*/
 int		ft_atoi(const char *nptr);
+int		ft_isdigit(int c);
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+
+/*
+* Parsing
+*/
 int		check_is_number(char **argv);
 int		check_is_number_valid(char **argv);
 int		validate_arguments(char **argv);
-int		ft_isdigit(int c);
 int		incorrect_number_arguments(int argc);
-void	*ft_routine(void *arg);
-int		ft_usleep(size_t milliseconds);
-void	initialize_philosopher(t_philo *philo, t_data *data, int index);
-void	ft_putstr_fd(char *s, int fd);
+
+/*
+* Initilization
+*/
 int initialization_philo(t_philo *philo, t_data *data);
 void initialization_data(t_data *data, char **argv);
-void	ft_sleep(t_philo *philo);
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
+
+
+/*
+* time
+*/
+int		ft_usleep(size_t milliseconds);
 size_t	get_current_time(void);
+
+
+/*
+* Routine
+*/
+
+void ft_sleep(t_philo *philo);
+void ft_think(t_philo *philo);
 
 #endif 

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 22:05:58 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/09 22:18:02 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ void ft_sleep(t_philo *philo)
 			return ;
 		ft_usleep(5000000);
 	}
+}
+
+void ft_think(t_philo *philo)
+{
+	long int start_to_think;
+	if (philo->data->is_dead == 1)
+		return;
+	start_to_think = get_current_time();
+	pthread_mutex_lock(&philo->data->printf_mutex);
+	printf("At {%lu} the philosopher %d thinking\n", start_to_think, philo->id_philo);
 }
 
 // int	ft_routine_eat(t_philo *philo)
