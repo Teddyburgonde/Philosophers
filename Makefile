@@ -18,6 +18,7 @@ SRCS = error.c \
 		parsing_number.c \
 		philo_is_dead.c \
 		routine.c \
+		memory.c \
 		time.c \
 		main.c 
 
