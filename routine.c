@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 22:18:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/12 14:55:59 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ void ft_think(t_philo *philo)
 	start_to_think = get_current_time();
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%lu} the philosopher %d thinking\n", start_to_think, philo->id_philo);
+	pthread_mutex_unlock(&philo->data->printf_mutex);
+}
+
+
+void ft_eat(t_philo *philo)
+{
+	long int start_to_eat;
+	if (philo->data->is_dead == 1)
+		return;
+	start_to_eat = get_current_time();
+	pthread_mutex_lock(&philo->data->printf_mutex);
+	printf("At {%lu} the philosopher %d eating\n", start_to_eat, philo->id_philo);
+	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
 
 // int	ft_routine_eat(t_philo *philo)

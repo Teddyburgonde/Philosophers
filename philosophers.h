@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 22:24:48 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/12 14:56:14 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ size_t	get_current_time(void);
 
 void ft_sleep(t_philo *philo);
 void ft_think(t_philo *philo);
+void ft_eat(t_philo *philo);
 
 #endif 
