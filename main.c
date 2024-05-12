@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 22:26:20 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:30:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 ! 4. Crée une fonction pour voir si le philosophers est mort
 ? ok.
 ! 4. Routine sleep
-
+? ok. 
 ! 5. Routine think
 ? ok.
 ! 6. Routine eat 
+? ok.
 ! 7. test 
 */
 

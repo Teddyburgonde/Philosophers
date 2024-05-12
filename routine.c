@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/12 14:55:59 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:30:30 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,17 @@ void ft_eat(t_philo *philo)
 	if (philo->data->is_dead == 1)
 		return;
 	start_to_eat = get_current_time();
+	// ! si la fourchette gauche est disponible
+	// ! si la fourchette droite est disponible
+	pthread_mutex_lock(&philo->left_fork->fork_mutex);
+	printf("At {%lu} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
+	pthread_mutex_unlock(&philo->data->printf_mutex);
+	
+	pthread_mutex_lock(&philo->right_fork->fork_mutex);
+	printf("At {%lu} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
+	pthread_mutex_unlock(&philo->data->printf_mutex);
+	
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%lu} the philosopher %d eating\n", start_to_eat, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
-
-// int	ft_routine_eat(t_philo *philo)
-// {
-
-// 	// int right_fork = (philo_id + 1) % NUM_PHILOSOPHERS;
-// 	//  usleep(rand() % 1000000);
-// 	while (1)
-// 	{
-// 		pthread_mutex_lock(&philo->data->printf_mutex);
-// 		if (philo->data->is_dead == 1)
-// 		{
-// 			pthread_mutex_unlock(&philo->data->printf_mutex);
-// 			return (1);
-// 		}
-// 		printf("Philosophising is thinking\n");
-// 		pthread_mutex_unlock(&philo->data->printf_mutex);
-// 		pthread_mutex_lock(&philo->data->fork->fork_mutex);
-// 		if (philo->left_fork->mutex_taken == 0 && philo->right_fork->mutex_taken == 0) // la fourchette gauche est libre 
-// 		{
-// 			printf("The philosopher takes both forks\n");
-// 			printf("The philosopher is eating\n");
-// 		}
-// 		pthread_mutex_unlock(&philo->data->fork->fork_mutex);
-// 		pthread_mutex_lock(&philo->data->fork->fork_mutex);
-// 		if (philo->left_fork->mutex_taken == 1 && philo->right_fork->mutex_taken == 1)
-// 		{
-// 			printf("The philosopher puts down the forks\n");
-// 		}
-// 		pthread_mutex_unlock(&philo->data->fork->fork_mutex);
-// 		pthread_mutex_lock(&philo->data->printf_mutex);
-// 		printf("The philosopher sleeping\n");
-// 		pthread_mutex_unlock(&philo->data->fork->fork_mutex);
-// 	}
-// }
