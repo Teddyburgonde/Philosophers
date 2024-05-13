@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 15:37:31 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/13 08:18:52 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int initialization_philo(t_philo *philo, t_data *data)
 	{	
 		philo[i].data = data;
 		philo[i].id_philo = i + 1;
+		//! nombre de repas mangé
 		philo[i].nb_meals_eaten = 0;
 		philo[i].nb_forks = 0;
-		philo[i].last_time_eaten = data->is_dead;
 		philo[i].left_fork = &data->forks[i];
+		// ! si c'est le dernier , sa sera la fourchette de gauche du premier
+		// ! sinon c'est la fourchette de gauche du philo a ta droite 
 		if (philo[i].id_philo == data->number_of_philosophers)
 			philo[i].right_fork = &data->forks[0];
 		else
@@ -44,4 +46,22 @@ void initialization_data(t_data *data, char **argv)
 	data->is_dead = 0;
 	data->philo_satiated = 0;
 	data->start_time = get_current_time();
+}
+
+void initialization_mutex(t_data *data, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	data->forks = malloc(sizeof(t_fork) * data->number_of_philosophers);
+	
+	while (i < data->number_of_philosophers)
+	{	
+		pthread_mutex_init(&data->forks->fork_mutex, NULL);
+		i++;
+	}	
+	
+	pthread_mutex_init(&data->is_dead_mutex, NULL);
+	pthread_mutex_init(&data->philo_satiated_mutex, NULL);
+	pthread_mutex_init(&data->printf_mutex, NULL);
 }

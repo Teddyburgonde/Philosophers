@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/12 15:55:16 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/13 08:19:13 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <sys/time.h>
 # include <stdio.h>
 
-# define EMPTY '\0'
+/*
+* Structures
+*/
 
 typedef struct s_fork{
-	int	mutex_id;
+	int	fork_is_available;
 	pthread_mutex_t fork_mutex;
 }t_fork;
 
@@ -74,6 +76,7 @@ int		incorrect_number_arguments(int argc);
 */
 int initialization_philo(t_philo *philo, t_data *data);
 void initialization_data(t_data *data, char **argv);
+void initialization_mutex(t_data *data, t_philo *philo);
 
 
 /*
@@ -91,4 +94,9 @@ void ft_sleep(t_philo *philo);
 void ft_think(t_philo *philo);
 void ft_eat(t_philo *philo);
 
+/*
+* dead
+*/
+
+int	is_philo_dead(t_philo *philo);
 #endif 

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:32:09 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/05 09:35:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/13 07:01:36 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 
 int	is_philo_dead(t_philo *philo)
 {	
-	long int actual_time;
+	long int current_time;
 
 	pthread_mutex_lock(&philo->data->is_dead_mutex);
 	if (philo->data->is_dead == 1)
@@ -63,13 +63,15 @@ int	is_philo_dead(t_philo *philo)
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->data->is_dead_mutex);
-	actual_time = get_current_time();
-	if (actual_time - philo->last_time_eaten > philo->data->time_to_die)
+	current_time = get_current_time();
+	if (current_time - philo->last_time_eaten > philo->data->time_to_die)
 	{
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		philo->data->is_dead = 1;
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		pthread_mutex_lock(&philo->data->printf_mutex);
 		printf("The philosopher is dead\n");
+		pthread_mutex_unlock(&philo->data->printf_mutex);
 		return (1);
 	}
 	return (0);
