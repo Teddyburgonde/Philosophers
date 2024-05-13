@@ -6,11 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/13 08:18:15 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:12:31 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
 
 //! philosophers 5 800 200 200 7
 

@@ -6,19 +6,31 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/13 07:17:08 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:11:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include <pthread.h>
 
-void	ft_taken_fork(t_philo *philo)
+// a etudier 
+void ft_taken_fork(t_philo *philo)
 {
-	if (is_philo_dead(philo) == 1)
-		return ;
-	
-	//! est ce que les fourchettes sont disponible 
+	if (pthread_mutex_trylock(&philo->left_fork->fork_mutex) == 0)
+	{
+		pthread_mutex_lock(&philo->data->printf_mutex);
+		printf("At {%lu} the philosopher %d take the left fork\n", get_current_time(), philo->id_philo);
+		pthread_mutex_unlock(&philo->data->printf_mutex);
+	}
+	if (pthread_mutex_trylock(&philo->right_fork->fork_mutex) == 0)
+	{
+		pthread_mutex_lock(&philo->data->printf_mutex);
+		printf("At {%lu} the philosopher %d take the right fork\n", get_current_time(), philo->id_philo);
+		pthread_mutex_unlock(&philo->data->printf_mutex);
+	}
+}
+ft_taken_fork()
+{
 	
 }
 
