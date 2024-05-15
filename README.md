@@ -333,7 +333,7 @@ Sources :
 - Introduction To Threads (pthreads) -> https://www.youtube.com/watch?v=ldJ8WGZVXZk 
 - Readme amyplant -> https://github.com/iciamyplant/Philosophers/tree/master 
 - Readme de Romain -> https://github.com/Romain-ItAllDepends/Tronc-commun/blob/main/PHILOSOPHERS/README.md 
-- Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90 ❌  29m00
+- Video de Jamshidbek Ergashev -> https://www.youtube.com/watch?v=UGQsvVKwe90
 - Explication du projet par Medium -> https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2 
 - https://medium.com/swlh/the-dining-philosophers-problem-bbdb92e6b788
 - https://medium.com/swlh/the-dining-philosophers-problem-solution-in-c-90e2593f64e8
