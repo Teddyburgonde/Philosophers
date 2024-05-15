@@ -310,7 +310,8 @@ Une idee sa serait de crée une boucle avec une logique comme :
 ```c
 - Regarder si le philosophe est mort ( effectivement si il est mort il ne peut pas manger.
 - Il regarde si la fourchette de gauche et celle de droite sont disponible
-- Si elles sont disponible il mange
+- Si elles sont disponible il les prends;
+- Il se met a manger
 - Quand il a fini de manger il depose les fouchettes
 - Ensuite il pense
 - Pour finir il dort 
