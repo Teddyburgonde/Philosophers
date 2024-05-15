@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > **En construction** 🚧
-**Dernière mise à jour 09/05/2024 à 16h15.**
+**Dernière mise à jour 15/05/2024 à 08h30.**
 
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :+1:</b></h2>
@@ -117,128 +117,7 @@ Quand on crée un mutex on alloue de la mémoire donc pour éviter les fuites de
 
 ## Comprendre l'importance du mutex 
 
-```c
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
-
-void	*print1(void *mutex)
-{
-	int	i;
-	char	str[] = "Hello 42";
-
-	i = 0;
-	pthread_mutex_lock(mutex);
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		i++;
-	}
-	printf("\n");
-	pthread_mutex_unlock(mutex);
-}
-
-void  *print2(void *mutex)
-{
-	int    i;
-	char  str[] = "Bye 42";
-
-	i = 0;
-	pthread_mutex_lock(mutex);
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		i++;
-	}
-	pthread_mutex_unlock(mutex);
-}
-
-int  main(void)
-{
-	pthread_t  t1;
-	pthread_t  t2;
-	pthread_mutex_t	mutex;
-
-	pthread_mutex_init(&mutex, NULL);
-	pthread_create(&t1, NULL, print1, &mutex);
-	pthread_create(&t2, NULL, print2,  &mutex);
-	pthread_join(t1, NULL);
-	pthread_join(t2, NULL);
-	pthread_mutex_destroy(&mutex);
-
-	return (0);
-}
-```
-
-resultat :
-
-```
-Hello 42
-Bye 42%
-```
-
-Maintenant sans utiliser le mutex 
-
-```c
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
-
-void	*print1(void *mutex)
-{
-	int	i;
-	char	str[] = "Hello 42";
-
-	i = 0;
-	//pthread_mutex_lock(mutex);
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		i++;
-	}
-	printf("\n");
-	//pthread_mutex_unlock(mutex);
-}
-
-void  *print2(void *mutex)
-{
-	int    i;
-	char  str[] = "Bye 42";
-
-	i = 0;
-	//pthread_mutex_lock(mutex);
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		i++;
-	}
-	//pthread_mutex_unlock(mutex);
-}
-
-int  main(void)
-{
-	pthread_t  t1;
-	pthread_t  t2;
-	//pthread_mutex_t	mutex;
-
-	//pthread_mutex_init(&mutex, NULL);
-	pthread_create(&t1, NULL, print1, NULL);
-	pthread_create(&t2, NULL, print2, NULL);
-	pthread_join(t1, NULL);
-	pthread_join(t2, NULL);
-	//pthread_mutex_destroy(&mutex);
-
-	return (0);
-}
-```
-
-resultat : 
-
-```
-Bye 42Hello 42
-```
+Si on n'utilise pas de mutex , deux threads pourrait vouloir ecrire en meme temps dans le meme espace memoire ce qui pourrait provoquer des comportements indifini comme des data races. 
 
 et si vous lancez avec valgrind : 
 ```
@@ -297,8 +176,6 @@ Erreur sans mutex :
 
 ```
 
-Cette erreur signifie que les threads essai d'ecrire dans la memoire en meme temps donc cela pose probleme. 
-
 ## gettimeofday
 
 Il affiche le temps écoulé depuis le 01/01/1970(l'époque Unix) à maintenant. 
@@ -318,7 +195,6 @@ int	main()
 	example_1();
 }
 ```
-
 
 ## ft _usleep
 
@@ -426,21 +302,18 @@ int initialization_philo(t_philo *philo, t_data *data)
 	return (0);
 }
 ```
-Je vous laisse le faire aussi pour data.
+Je vous laisse le faire aussi pour data etc....
 
 ## Etape 4 : Les routines  
 
-Créé une boucle : 
-
+Une idee sa serait de crée une boucle avec une logique comme : 
 ```c
-- qui se brisera dès que le drapeau mort sera à 1 (un philo est mort).
-- Ils mangerons.
-- Ils dormirons.
-- Ils penserons.
-Le philo pense -> print “X is thinking” (X is the philo number)
-Le philo dort -> utiliser ft_usleep et print "X is sleeping"
-Le philo mange -> lock la fourchette droite print "X is eating" + lock la fourchette gauche print "X is eating"
-Ensuite, il mangera à nouveau en utilisant ft_usleep et alors seulement il laissera tomber les fourchettes en déverrouillant les verrous
+- Regarder si le philosophe est mort ( effectivement si il est mort il ne peut pas manger.
+- Il regarde si la fourchette de gauche et celle de droite sont disponible
+- Si elles sont disponible il mange
+- Quand il a fini de manger il depose les fouchettes
+- Ensuite il pense
+- Pour finir il dort 
 ```
 
 ## Visualizer
@@ -465,7 +338,7 @@ Sources :
 - https://medium.com/swlh/the-dining-philosophers-problem-solution-in-c-90e2593f64e8
 - https://nafuka11.github.io/philosophers-visualizer/ 
 
+🚧🚧🚧🚧🚧🚧🚧🚧
 
-🚧
-1. Faire dormir les philosophers / 2 ?
+
 
