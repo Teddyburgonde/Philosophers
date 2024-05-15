@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/13 08:18:52 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/15 08:21:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,11 @@ void initialization_mutex(t_data *data, t_philo *philo)
 	pthread_mutex_init(&data->is_dead_mutex, NULL);
 	pthread_mutex_init(&data->philo_satiated_mutex, NULL);
 	pthread_mutex_init(&data->printf_mutex, NULL);
+}
+
+void initialization_forks(t_philo *philo)
+{
+	// ! la je dis que les forks ne sont pas disponibles.
+	philo->left_fork->fork_is_available = 1;
+	philo->right_fork->fork_is_available = 1;
 }

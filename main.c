@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/14 10:23:40 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/15 08:21:16 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,6 @@
 ????????????????????????????
 */
 
-// 1 disponible 
-// 0 le fork n'est pas disponible 
-
-
-void initialization_fork(t_philo *philo)
-{
-	// la je dis que les forks ne sont pas disponibles.
-	philo->left_fork->fork_is_available = 0;
-	philo->right_fork->fork_is_available = 0;
-}
-
-void	ft_taken_fork(t_philo *philo)
-{
-	// la je rends les forks disponibles.
-	philo->left_fork->fork_is_available = 1;
-	philo->right_fork->fork_is_available = 1;
-	if (philo->data->is_dead == 1)
-		return;
-	if (philo->left_fork->fork_is_available == 1)
-	{
-		
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -66,7 +43,7 @@ int	main(int argc, char **argv)
 	t_data data;
 	
 	philo = NULL;
-	initialization_fork(philo);
+	initialization_forks(philo);
 	initialization_data(&data, argv);
 	if (incorrect_number_arguments(argc) == 1)
 		return (EXIT_FAILURE);
@@ -85,7 +62,14 @@ int	main(int argc, char **argv)
 		free(data.forks);
 		return (1);
 	}
-	printf("Je passe ici\n");
+	if (philo->data->is_dead == 1)
+	{
+		pthread_mutex_lock(&philo->data->printf_mutex);
+		printf("The philosopher is dead\n");
+		pthread_mutex_unlock(&philo->data->printf_mutex);	
+		return (1);
+	}
+	
 	// while (1)
 	// {
 	// 	ft_sleep(philo);
@@ -98,4 +82,4 @@ int	main(int argc, char **argv)
 	//! Si le philosophe n'est pas mort on peut faire la routine 
 	
 	//! pthread_mutex_destroy pour détruire les mutex.
-}	
+}

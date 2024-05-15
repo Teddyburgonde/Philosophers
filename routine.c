@@ -6,32 +6,32 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/14 10:15:22 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/15 08:20:50 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-#include <pthread.h>
 
-// a etudier 
-// void ft_taken_fork(t_philo *philo)
-// {
-// 	if (pthread_mutex_trylock(&philo->left_fork->fork_mutex) == 0)
-// 	{
-// 		pthread_mutex_lock(&philo->data->printf_mutex);
-// 		printf("At {%lu} the philosopher %d take the left fork\n", get_current_time(), philo->id_philo);
-// 		pthread_mutex_unlock(&philo->data->printf_mutex);
-// 	}
-// 	if (pthread_mutex_trylock(&philo->right_fork->fork_mutex) == 0)
-// 	{
-// 		pthread_mutex_lock(&philo->data->printf_mutex);
-// 		printf("At {%lu} the philosopher %d take the right fork\n", get_current_time(), philo->id_philo);
-// 		pthread_mutex_unlock(&philo->data->printf_mutex);
-// 	}
-// }
-
-
-
+void	ft_taken_fork(t_philo *philo)
+{
+	//! la je rends les forks disponibles.
+	philo->left_fork->fork_is_available = 0;
+	philo->right_fork->fork_is_available = 0;
+	if (philo->data->is_dead == 1)
+		return;
+	if (philo->left_fork->fork_is_available == 1)
+	{
+		pthread_mutex_lock(&philo->data->printf_mutex);
+		printf("At {%lu} the philosopher %d take the left forks \n",get_current_time(), philo->id_philo);
+		pthread_mutex_unlock(&philo->data->printf_mutex);
+	}
+	if (philo->right_fork->fork_is_available == 1)
+	{
+		pthread_mutex_lock(&philo->data->printf_mutex);
+		printf("At {%lu} the philosopher %d take the right fork \n",get_current_time(), philo->id_philo);
+		pthread_mutex_unlock(&philo->data->printf_mutex);
+	}
+}
 
 void ft_sleep(t_philo *philo)
 {
@@ -46,7 +46,7 @@ void ft_sleep(t_philo *philo)
 	{
 		if (philo->data->is_dead == 1)
 			return ;
-		//ft_usleep(5000000);
+		//!ft_usleep(5000000);
 	}
 }
 
@@ -61,9 +61,6 @@ void ft_think(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
 
-
-
-
 void ft_eat(t_philo *philo)
 {
 	long int start_to_eat;
@@ -72,14 +69,13 @@ void ft_eat(t_philo *philo)
 	start_to_eat = get_current_time();
 	// ! si la fourchette gauche est disponible
 	// ! si la fourchette droite est disponible
-	pthread_mutex_lock(&philo->left_fork->fork_mutex);
-	printf("At {%lu} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
-	pthread_mutex_unlock(&philo->data->printf_mutex);
+	// pthread_mutex_lock(&philo->left_fork->fork_mutex);
+	// printf("At {%lu} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
+	// pthread_mutex_unlock(&philo->data->printf_mutex);
 	
-	pthread_mutex_lock(&philo->right_fork->fork_mutex);
-	printf("At {%lu} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
-	pthread_mutex_unlock(&philo->data->printf_mutex);
-	
+	// pthread_mutex_lock(&philo->right_fork->fork_mutex);
+	// printf("At {%lu} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
+	// pthread_mutex_unlock(&philo->data->printf_mutex);
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%lu} the philosopher %d eating\n", start_to_eat, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
