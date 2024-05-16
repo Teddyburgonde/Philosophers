@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/15 08:21:21 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:16:05 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int initialization_philo(t_philo *philo, t_data *data)
 	return (0);
 }
 
-void initialization_data(t_data *data, char **argv)
+int initialization_data(t_data *data, char **argv)
 {
 	data->number_of_philosophers = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -46,29 +46,30 @@ void initialization_data(t_data *data, char **argv)
 	data->is_dead = 0;
 	data->philo_satiated = 0;
 	data->start_time = get_current_time();
+	return (0);
 }
 
-void initialization_mutex(t_data *data, t_philo *philo)
+int	initialization_mutex(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	data->forks = malloc(sizeof(t_fork) * data->number_of_philosophers);
-	
+	data->forks = malloc(sizeof(t_data) * data->number_of_philosophers);
 	while (i < data->number_of_philosophers)
 	{	
 		pthread_mutex_init(&data->forks->fork_mutex, NULL);
 		i++;
-	}	
-	
+	}
 	pthread_mutex_init(&data->is_dead_mutex, NULL);
 	pthread_mutex_init(&data->philo_satiated_mutex, NULL);
 	pthread_mutex_init(&data->printf_mutex, NULL);
+	return (0);
 }
 
 void initialization_forks(t_philo *philo)
 {
 	// ! la je dis que les forks ne sont pas disponibles.
+	
 	philo->left_fork->fork_is_available = 1;
 	philo->right_fork->fork_is_available = 1;
 }

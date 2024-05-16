@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/15 08:21:16 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:48:13 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,28 @@
 ????????????????????????????
 */
 
-
 int	main(int argc, char **argv)
 {
 	t_philo	*philo;
-	t_data data;
+	t_fork	*fork;
+	t_data  data;
+	(void)argc;
 	
 	philo = NULL;
-	initialization_forks(philo);
-	initialization_data(&data, argv);
-	if (incorrect_number_arguments(argc) == 1)
-		return (EXIT_FAILURE);
-	if (validate_arguments(argv) == 1)
-		return (EXIT_FAILURE);
+	fork = NULL;
+	if (initialization_data(&data, argv) != 0)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	printf("OooooooooooooKKKKKKKKK\n");
+	if (initialization_mutex(&data) != 0)
+	{
+		free(data.forks);
+		printf("Error\n");
+		return (1);
+	}
 	philo = ft_calloc(data.number_of_philosophers, sizeof(t_philo));
-	if (philo == NULL)
-		return (1);
-	data.forks = ft_calloc(data.number_of_philosophers, sizeof(t_fork));	
-	if (data.forks == NULL)
-		return (1);
 	if (initialization_philo(philo, &data) != 0)
 	{
 		printf("Error\n");
@@ -62,6 +65,12 @@ int	main(int argc, char **argv)
 		free(data.forks);
 		return (1);
 	}
+	if (philo == NULL)
+		return (1);
+	if (incorrect_number_arguments(argc) == 1)
+		return (EXIT_FAILURE);
+	if (validate_arguments(argv) == 1)
+		return (EXIT_FAILURE);	
 	if (philo->data->is_dead == 1)
 	{
 		pthread_mutex_lock(&philo->data->printf_mutex);
@@ -69,17 +78,22 @@ int	main(int argc, char **argv)
 		pthread_mutex_unlock(&philo->data->printf_mutex);	
 		return (1);
 	}
-	
-	// while (1)
-	// {
-	// 	ft_sleep(philo);
-	// 	ft_eat(philo);
-	// 	ft_think(philo);
-	// }
+	initialization_forks(philo);
+	while (1)
+	{
+
+		printf("SALUT JE PASSE ICI AUUUUUUUSISSIISISISISI\n");
+		ft_taken_fork(philo);
+		ft_eat(philo);
+		ft_think(philo);
+		ft_sleep(philo);
+	}
 	free(philo);
 	free(data.forks);
 
+	//!pthread_create(&thread1, NULL, ft_write_word, NULL);
 	//! Si le philosophe n'est pas mort on peut faire la routine 
 	
 	//! pthread_mutex_destroy pour détruire les mutex.
+
 }
