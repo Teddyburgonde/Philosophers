@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/16 15:38:48 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:49:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,18 @@ int	main(int argc, char **argv)
 		pthread_mutex_unlock(&philo->data->printf_mutex);	
 		return (EXIT_FAILURE);
 	}
-	if (pthread_create(&philo->thread_id, NULL, ft_routine(philo), NULL) != 0)
+	int	i;
+
+	i = 0;
+	while (i < data.number_of_philosophers)
 	{
-		free(philo);
-		free(data.forks);
-		return (EXIT_FAILURE);
+			
+			table.philos[i].id = i;
+		pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &table.philos[i]);
+	
+		i++;
 	}
-	// if (pthread_join(philo->thread_id, NULL) != 0) {
+	pthread_join(philo->thread_id, NULL);
     // 	printf("Error\n");
 	// 	free(philo);
 	// 	free(data.forks);

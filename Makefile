@@ -7,7 +7,7 @@ CC = clang
 
 #=================== FLAGS ==================#
 
-CFLAGS = -Wall -Wextra -Werror -I. -g 
+CFLAGS = -Wall -Wextra -Werror -I. -g
 LDFLAGS = -lpthread
 
 #============= MANDATORY SOURCES =============#
