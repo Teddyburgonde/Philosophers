@@ -6,14 +6,11 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/16 18:49:01 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:05:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-#include <pthread.h>
-#include <stdlib.h>
-
 
 //! philosophers 5 800 200 200 7
 
@@ -28,12 +25,13 @@
 ? ok.
 ! 5. Crée une fonction pour voir si le philosophers est mort
 ? ok.
-! 6. Routine sleep
+! 6. Routine eat
 ? ok. 
 ! 7. Routine think
 ? ok.
-! 8. Routine eat 
-? ok.
+! 8. Routine sleep
+???????????????????????????
+
 ! 9. test 
 ????????????????????????????
 */
@@ -91,11 +89,9 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	while (i < data.number_of_philosophers)
-	{
-			
-			table.philos[i].id = i;
-		pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &table.philos[i]);
-	
+	{	
+		philo[i].id_philo = i;
+		pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
 		i++;
 	}
 	pthread_join(philo->thread_id, NULL);
