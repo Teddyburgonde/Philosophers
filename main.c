@@ -6,11 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/17 09:05:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:36:57 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+#include <stdlib.h>
 
 //! philosophers 5 800 200 200 7
 
@@ -36,13 +37,12 @@
 ????????????????????????????
 */
 
-
 void	*ft_routine(t_philo *philo)
 {
 	ft_taken_fork(philo);
 	ft_eat(philo);
 	ft_think(philo);
-	//ft_sleep(philo);
+	ft_sleep(philo);
 	return (NULL);
 }
 
@@ -51,9 +51,13 @@ int	main(int argc, char **argv)
 	t_philo	*philo;
 	t_fork	*fork;
 	t_data  data;
+	int		check;
+	int		i;
 	
 	philo = NULL;
 	fork = NULL;
+	check = 0;
+	i = 0;
 	if (initialization_data(&data, argv) != 0)
 	{
 		printf("Error\n");
@@ -78,34 +82,32 @@ int	main(int argc, char **argv)
 	if (validate_arguments(argv) == 1)
 		return (EXIT_FAILURE);	
 	initialization_forks(philo);
-	if (philo->data->is_dead == 1)
-	{
-		pthread_mutex_lock(&philo->data->printf_mutex);
-		printf("The philosopher is dead\n");
-		pthread_mutex_unlock(&philo->data->printf_mutex);	
+	if (check_philo_is_dead(philo) == 1)
 		return (EXIT_FAILURE);
-	}
-	int	i;
-
-	i = 0;
 	while (i < data.number_of_philosophers)
 	{	
 		philo[i].id_philo = i;
-		pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
+		check = pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
+		if (check != 0)
+			return (-1);
 		i++;
 	}
-	pthread_join(philo->thread_id, NULL);
-    // 	printf("Error\n");
-	// 	free(philo);
-	// 	free(data.forks);
-	// 	return (EXIT_FAILURE);
-	// }
-	//pthread_detach(philo->thread_id);
+	i = 0;
+	while (i < data.number_of_philosophers)
+	{
+		check = pthread_join(philo[i].thread_id, NULL);
+		if (check != 0)
+			return (-1);
+		i++;
+	}
+	i = 0;
+	while (i < data.number_of_philosophers)
+	{
+		free(philo);
+		i++;
+	}
+	free(data.forks);
 	pthread_mutex_destroy(&philo->data->printf_mutex);
-	pthread_mutex_destroy(&philo->data->printf_mutex);
-	pthread_mutex_destroy(&data.forks->fork_mutex);
 	pthread_mutex_destroy(&data.is_dead_mutex);
 	pthread_mutex_destroy(&data.philo_satiated_mutex);
-	free(philo);
-	free(data.forks);
 }
