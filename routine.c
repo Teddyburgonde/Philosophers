@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/17 09:10:39 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:00:20 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	ft_taken_fork(t_philo *philo)
 	if (philo->left_fork->fork_is_available == 0)
 	{
 		pthread_mutex_lock(&philo->data->printf_mutex);
-		printf("At {%lu} the philosopher %d take the left forks \n",
-			get_current_time(), philo->id_philo);
+		printf("At {%li} the philosopher %d take the left forks \n",
+			get_timestamp(philo->data->start_time), philo->id_philo);
 		pthread_mutex_unlock(&philo->data->printf_mutex);
 	}
 	if (philo->right_fork->fork_is_available == 0)
 	{
 		pthread_mutex_lock(&philo->data->printf_mutex);
-		printf("At {%lu} the philosopher %d take the right fork \n",
-			get_current_time(), philo->id_philo);
+		printf("At {%li} the philosopher %d take the right fork \n",
+			get_timestamp(philo->data->start_time), philo->id_philo);
 		pthread_mutex_unlock(&philo->data->printf_mutex);
 	}
 	//! Fourchettes indisponible
@@ -44,7 +44,7 @@ void	ft_sleep(t_philo *philo)
 
 	if (philo->data->is_dead == 1)
 		return ;
-	start_to_sleep = get_current_time();
+	start_to_sleep = get_timestamp(philo->data->start_time);
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%li} the philosopher %d falls asleep\n",
 		start_to_sleep, philo->id_philo);
@@ -64,7 +64,7 @@ void	ft_think(t_philo *philo)
 
 	if (philo->data->is_dead == 1)
 		return ;
-	start_to_think = get_current_time();
+	start_to_think = get_timestamp(philo->data->start_time);
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%li} the philosopher %d thinking\n",
 		start_to_think, philo->id_philo);
@@ -76,17 +76,17 @@ void	ft_eat(t_philo *philo)
 	long int	start_to_eat;
 	if (philo->data->is_dead == 1)
 		return ;
-	start_to_eat = get_current_time();
+	start_to_eat = get_timestamp(philo->data->start_time);
 	// ! si la fourchette gauche est disponible
 	// ! si la fourchette droite est disponible
 	// pthread_mutex_lock(&philo->left_fork->fork_mutex);
-	// printf("At {%lu} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
+	// printf("At {%li} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
 	// pthread_mutex_unlock(&philo->data->printf_mutex);
 	
 	// pthread_mutex_lock(&philo->right_fork->fork_mutex);
-	// printf("At {%lu} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
+	// printf("At {%li} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
 	// pthread_mutex_unlock(&philo->data->printf_mutex);
 	pthread_mutex_lock(&philo->data->printf_mutex);
-	printf("At {%lu} the philosopher %d eating\n", start_to_eat, philo->id_philo);
+	printf("At {%li} the philosopher %d eating\n", start_to_eat, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }

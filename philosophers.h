@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/23 11:34:37 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/28 20:59:33 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	initialization_mutex(t_data *data);
 */
 int		ft_usleep(size_t milliseconds);
 size_t	get_current_time(void);
-
+long int	get_timestamp(long int start);
 
 /*
 * Routine

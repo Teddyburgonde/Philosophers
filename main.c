@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/23 11:36:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/28 20:32:02 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <stdlib.h>
 
 //! philosophers 5 800 200 200 7
+
+//number_of_philosophers time_to_die time_to_eat time_to_sleep
+// [number_of_times_each_philosopher_must_ea
 
 /*
 ! 1. Initialisation mutex 
@@ -49,13 +52,13 @@ void	*ft_routine(t_philo *philo)
 int	main(int argc, char **argv)
 {
 	t_philo	*philo;
-	t_fork	*fork;
+	//t_fork	*fork;
 	t_data  data;
 	int		check;
 	int		i;
 	
 	philo = NULL;
-	fork = NULL;
+	//fork = NULL;
 	check = 0;
 	i = 0;
 	if (initialization_data(&data, argv) != 0)

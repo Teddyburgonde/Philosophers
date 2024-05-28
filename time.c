@@ -6,12 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
-/*   Updated: 2024/04/14 16:34:01 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:00:44 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+// ! l'heure actuel 
 size_t	get_current_time(void)
 {
 	struct timeval	time;
@@ -19,6 +20,14 @@ size_t	get_current_time(void)
 	if (gettimeofday(&time, NULL) == -1)
 		write(2, "gettimeofday() error\n", 22);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+// ! le temps ecouler depuis le debut du programme
+long int	get_timestamp(long int start) {
+	long int	timestamp;
+
+	timestamp = get_current_time() - start;
+	return (timestamp);
 }
 
 int	ft_usleep(size_t milliseconds)
