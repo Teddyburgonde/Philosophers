@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/28 20:32:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/12 10:02:32 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,31 @@ void	*ft_routine(t_philo *philo)
 	return (NULL);
 }
 
+int	verif_initialization(t_data *data, char **argv, t_philo **philo)
+{
+	if (initialization_data(data, argv) != 0)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	if (initialization_mutex(data) != 0)
+	{
+		free(data->forks);
+		printf("Error\n");
+		return (1);
+	}
+	*philo = ft_calloc(data->number_of_philosophers, sizeof(t_philo));
+	if (initialization_philo(*philo, data) != 0)
+	{
+		printf("Error\n");
+		free(*philo);
+		free(data->forks);
+		return (1);
+	}
+	initialization_forks(*philo);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_philo	*philo;
@@ -61,35 +86,18 @@ int	main(int argc, char **argv)
 	//fork = NULL;
 	check = 0;
 	i = 0;
-	if (initialization_data(&data, argv) != 0)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	if (initialization_mutex(&data) != 0)
-	{
-		free(data.forks);
-		printf("Error\n");
-		return (1);
-	}
-	philo = ft_calloc(data.number_of_philosophers, sizeof(t_philo));
-	if (initialization_philo(philo, &data) != 0)
-	{
-		printf("Error\n");
-		free(philo);
-		free(data.forks);
-		return (1);
-	}
 	if (incorrect_number_arguments(argc) == 1)
 		return (EXIT_FAILURE);
 	if (validate_arguments(argv) == 1)
-		return (EXIT_FAILURE);	
-	initialization_forks(philo);
+		return (EXIT_FAILURE);
+	if (verif_initialization(&data, argv, &philo) != 0)
+		return (EXIT_FAILURE);
 	if (check_philo_is_dead(philo) == 1)
 		return (EXIT_FAILURE);
 	while (i < data.number_of_philosophers)
 	{	
 		philo[i].id_philo = i;
+		//! un philo doit avoir son propre pthread car cela lui permet de faire des actions en simultaner (manger, dormir, penser)
 		check = pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
 		if (check != 0)
 			return (-1);
