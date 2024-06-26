@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/28 20:59:33 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:32:30 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,52 +55,77 @@ typedef struct s_philo{
 
 
 /*
-* Utils
+* Utils for parsing
 */
-int		ft_atoi(const char *nptr);
-int		ft_isdigit(int c);
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	ft_putstr_fd(char *s, int fd);
+
+int			ft_atoi(const char *nptr);
+int			ft_isdigit(int c);
+void		ft_putstr_fd(char *s, int fd);
+
+/*
+* Utils for memory
+*/
+
+void		*ft_memset(void *s, int c, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+
 
 /*
 * Parsing
 */
-int		check_is_number(char **argv);
-int		check_is_number_valid(char **argv);
-int		validate_arguments(char **argv);
-int		incorrect_number_arguments(int argc);
+
+int			check_is_number(char **argv);
+int			check_is_number_valid(char **argv);
+int			validate_arguments(char **argv);
+int			incorrect_number_arguments(int argc);
 
 /*
 * Initilization
 */
-int initialization_philo(t_philo *philo, t_data *data);
-int initialization_data(t_data *data, char **argv);
-void initialization_forks(t_philo *philo);
-int	initialization_mutex(t_data *data);
+
+int			initialization_philo(t_philo *philo, t_data *data);
+int			initialization_data(t_data *data, char **argv);
+int			initialization_mutex(t_data *data);
+int			verif_initialization(t_data *data, char **argv, t_philo **philo);
+void		initialization_forks(t_philo *philo);
 
 
 /*
 * time
 */
-int		ft_usleep(size_t milliseconds);
-size_t	get_current_time(void);
+
+int			ft_usleep(size_t milliseconds);
+size_t		get_current_time(void);
 long int	get_timestamp(long int start);
+
+
+/*
+* Thread
+*/
+
+int	create_thread_start_ft_routine(t_philo	*philo, t_data *data);
+int	manage_thread(t_philo *philo, t_data *data);
 
 /*
 * Routine
 */
 
-void ft_sleep(t_philo *philo);
-void ft_think(t_philo *philo);
-void ft_eat(t_philo *philo);
-void	ft_taken_fork(t_philo *philo);
+void 		ft_sleep(t_philo *philo);
+void 		ft_think(t_philo *philo);
+void 		ft_eat(t_philo *philo);
+void		ft_taken_fork(t_philo *philo);
+void		*ft_routine(t_philo *philo);
+
+/*
+* free
+*/
+void	cleanup_ressources(t_philo *philo, t_data *data);
 
 /*
 * dead
 */
 
-int	is_philo_dead(t_philo *philo);
-int 	check_philo_is_dead(t_philo *philo);
+int			is_philo_dead(t_philo *philo);
+int 		check_philo_is_dead(t_philo *philo);
 
 #endif 

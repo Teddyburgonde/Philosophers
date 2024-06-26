@@ -6,37 +6,24 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/09 16:05:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:30:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	cleanup_ressources(t_philo *philo, t_data *data)
 {
-	size_t			i;
-	char			*tab;
+	int	i;
 
-	tab = s;
 	i = 0;
-	while (i < n)
+	while (i < data->number_of_philosophers)
 	{
-		tab[i] = c;
+		free(philo);
 		i++;
 	}
-	return (s);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void		*ptr;
-	long int	size_alloc;
-
-	size_alloc = nmemb * size;
-	if (size_alloc < 0 || ((int)nmemb < 0 && (int)size < 0))
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (ptr)
-		ft_memset(ptr, '\0', nmemb * size);
-	return (ptr);
+	free(data->forks);
+	pthread_mutex_destroy(&philo->data->printf_mutex);
+	pthread_mutex_destroy(&data->is_dead_mutex);
+	pthread_mutex_destroy(&data->philo_satiated_mutex);
 }

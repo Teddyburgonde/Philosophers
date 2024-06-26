@@ -2,6 +2,9 @@
 > **En construction** 🚧
 **Dernière mise à jour 15/05/2024 à 08h30.**
 
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+
+
 <h1 align="center"><b>Philosophers</b></h1>
 <h2 align="center"><b>Guide pas à pas :+1:</b></h2>
 
@@ -11,7 +14,8 @@
 
 ## **C'est quoi un thread ?**
 
-- Les threads permettent de faire du multi-tache comme l'utilisation de processus parent et enfant, mais bien moins exigeant au niveau de la mémoire. Un thread ne copie pas le programme du parent, mais exécute seulement la fonction qui lui est donnée. Les threads sont généralement utilisés pour effectuer de petite tache. Un processus parent peut avoir plusieurs threads.
+- Les threads c'est une unité d'execution qui permettent de faire du multi-tache , par exemple executer une fonction pour que les philosophes mangent, dorment et pense. 
+- Les threads on de nombreux avantages comme l'amelioration les performances du programme. 
 
 ## **Comment créer un thread ?**
 
@@ -19,11 +23,6 @@
 #include <pthread.h>
 #include <stdio.h>
 
-void	*ft_write_word(void *data)
-{
-	printf("salut\n");
-	return (NULL);
-}
 
 int	main()
 {	
@@ -35,26 +34,14 @@ int	main()
 	// 1. Un pointeur vers une variable de type pthread_t (c'est un identifiant)
 	// 2. Un pointeur vers une structure pthread_attr_t mais on en a pas donc on met NULL 
 	// 3. C'est un pointeur vers une fonction, la fonction doit accepter un argument de type void*
-	// 4. c'est l'argument de la fonction ft_write_word mais la on en a pas donc on met NULL
-	pthread_create(&thread1, NULL, ft_write_word, NULL);
-	
-	// on affiche l'identifiant de thread1
-	printf("Main: Creation du premier thread [%lu]\n", (unsigned long)thread1);
+	// 4. c'est l'argument de la fonction ft_routine mais la on en a pas donc on met NULL
+	pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
 
 	// avec cette fonction on attends que thread1 se termine puis quand il est terminer
 	// le main peut prendre fin.
 	// essayer le avec ou sans cette ligne vous pourez voir la difference.
-	pthread_join(thread1, NULL);
-
-	// permet de libérer les ressources du thread mais empêche de synchroniser plusieurs thrads
-	// a l'aide de pthread_join.
-	pthread_detach(thread1);
+	pthread_join(philo[i].thread_id, NULL);
 }
-```
-##  **Compilation**
-Ne pas oublier de rajouter -lpthread 
-```
-gcc -Wall -Werror -Wextra -lpthread main.c
 ```
 ## **C'est quoi un Mutex ?**
 
@@ -176,6 +163,156 @@ Erreur sans mutex :
 
 ```
 
+##  **Compilation**
+
+```c
+Ne pas oublier de rajouter -lpthread 
+gcc -Wall -Werror -Wextra -lpthread main.c
+```
+
+
+## Un squelette du projet : 
+```c
+
+Philosophers.h :
+
+- Crée une strucutre pour philo
+- Crée une structure pour data
+- Crée une structure pour fork
+
+Initialisation : 
+
+- initialisation struture philo 
+- initialisation struture data
+- initialisation struture forks
+- initialisation mutex 
+
+Parsing : 
+
+- Arguments valides
+- Nombre d'argument valides
+
+Gestion des threads : 
+
+- Creation des threads pour chaque philosophers et lancer les threads ( Lancer ft_routine )
+- Creation des routines : manger, dormir , penser.
+
+Gestion de la mort d'un philosopher 
+
+- Creation d'une fonction qui regarde si le philosopher est mort ou pas.
+
+Gestion du sommeil 
+
+- Creation de sa propre fonction ft_usleep
+
+Fourchette disponible ? 
+
+- Creation d'une fonction qui verifie si les fourchettes sont disponibles et si elle sont disponibles je peux les prendre. 
+
+```
+
+
+
+## Parsing
+## Analyse de Input 
+
+```
+./philosophers 5 800 200 200 7
+5 — Le nombre de philosophes
+800 — Le moment où un philosophe mourra s'il ne mange pas
+200 — Le temps qu'il faut à un philosophe pour manger
+200 — Le temps qu'il faut à un philosophe pour dormir
+7 Nombre de fois que tous les philosophes doivent manger avant de terminer le programme ** argument facultatif
+```
+
+Un Input correct doit ressembler a ceci : 
+```
+./philosophers 5 800 200 200 7
+```
+Errors :
+```
+- On doit avoir entre 4 a 5 arguments ( si on ne compte pas le ./a.out) ni plus ni moins. (Le dernier argument est facultatif) sinon error.
+- C'est que des chiffres , sinon error.
+- Si l'argument est vide "" , error.
+- tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous) sinon error.
+- Si argv[1] est suppérieur à 200 , error.
+```
+## Création des structures 
+
+Voila ma structure : 
+
+typedef struct s_fork{
+	int	mutex_id;
+	pthread_mutex_t fork_mutex;
+}t_fork;
+
+typedef struct s_data{
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	time_philo_must_eat;
+	int	is_dead;
+	int	philo_satiated;
+	long int	start_time;
+	t_fork	*forks;
+	pthread_mutex_t		is_dead_mutex;
+	pthread_mutex_t		philo_satiated_mutex;
+	pthread_mutex_t		printf_mutex;
+}	t_data;
+
+typedef struct s_philo{
+	t_data				*data;
+	int					id_philo;
+	int					nb_meals_eaten;
+	int					nb_forks;
+	long int			last_time_eaten;
+	pthread_t			thread_id;
+	t_fork	*left_fork;
+	t_fork	*right_fork;
+}	t_philo;
+
+## Initialisation des structures 
+Pour philo
+
+```c
+int initialization_philo(t_philo *philo, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophers)
+	{	
+		philo[i].data = data;
+		philo[i].id_philo = i + 1;
+		philo[i].nb_meals_eaten = 0;
+		philo[i].nb_forks = 0;
+		philo[i].last_time_eaten = data->is_dead;
+		philo[i].left_fork = &data->forks[i];
+		if (philo[i].id_philo == data->number_of_philosophers)
+			philo[i].right_fork = &data->forks[0];
+		else
+			philo[i].right_fork = &data->forks[i + 1];
+		i++;
+	}
+	return (0);
+}
+```
+Je vous laisse le faire aussi pour data etc....
+
+## Les routines  
+
+Une idee sa serait de crée une boucle avec une logique comme : 
+```c
+- Regarder si le philosophe est mort (effectivement si il est mort il ne peut pas manger).
+- Il regarde si la fourchette de gauche et celle de droite sont disponible
+- Si elles sont disponible il les prends;
+- Il se met a manger
+- Quand il a fini de manger il depose les fouchettes
+- Ensuite il pense
+- Pour finir il dort 
+```
+
 ## gettimeofday
 
 Il affiche le temps écoulé depuis le 01/01/1970(l'époque Unix) à maintenant. 
@@ -216,107 +353,6 @@ int	ft_usleep(size_t milliseconds)
 }
 ```
 
-## Etape 1 : Parsing
-
-## Analyse de Input 
-
-```
-./philosophers 5 800 200 200 7
-5 — Le nombre de philosophes
-800 — Le moment où un philosophe mourra s'il ne mange pas
-200 — Le temps qu'il faut à un philosophe pour manger
-200 — Le temps qu'il faut à un philosophe pour dormir
-7 Nombre de fois que tous les philosophes doivent manger avant de terminer le programme ** argument facultatif
-```
-
-Un Input correct doit ressembler a ceci : 
-```
-./philosophers 5 800 200 200 7
-```
-Errors :
-```
-- On doit avoir entre 4 a 5 arguments ( si on ne compte pas le ./a.out) ni plus ni moins. (Le dernier argument est facultatif) sinon error.
-- C'est que des chiffres , sinon error.
-- Si l'argument est vide "" , error.
-- tous les arugments doivent etre superieur a 0 sauf le nombre de repas que chaque philo doit manger (voir en dessous) sinon error.
-- Si argv[1] est suppérieur à 200 , error.
-```
-## Etape 2 : Création des structures 
-
-Voila ma structure : 
-
-typedef struct s_fork{
-	int	mutex_id;
-	pthread_mutex_t fork_mutex;
-}t_fork;
-
-typedef struct s_data{
-	int	number_of_philosophers;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	time_philo_must_eat;
-	int	is_dead;
-	int	philo_satiated;
-	long int	start_time;
-	t_fork	*forks;
-	pthread_mutex_t		is_dead_mutex;
-	pthread_mutex_t		philo_satiated_mutex;
-	pthread_mutex_t		printf_mutex;
-}	t_data;
-
-typedef struct s_philo{
-	t_data				*data;
-	int					id_philo;
-	int					nb_meals_eaten;
-	int					nb_forks;
-	long int			last_time_eaten;
-	pthread_t			thread_id;
-	t_fork	*left_fork;
-	t_fork	*right_fork;
-}	t_philo;
-
-## Etape 3 : Initialisation des structures 
-Pour philo
-
-```c
-int initialization_philo(t_philo *philo, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->number_of_philosophers)
-	{	
-		philo[i].data = data;
-		philo[i].id_philo = i + 1;
-		philo[i].nb_meals_eaten = 0;
-		philo[i].nb_forks = 0;
-		philo[i].last_time_eaten = data->is_dead;
-		philo[i].left_fork = &data->forks[i];
-		if (philo[i].id_philo == data->number_of_philosophers)
-			philo[i].right_fork = &data->forks[0];
-		else
-			philo[i].right_fork = &data->forks[i + 1];
-		i++;
-	}
-	return (0);
-}
-```
-Je vous laisse le faire aussi pour data etc....
-
-## Etape 4 : Les routines  
-
-Une idee sa serait de crée une boucle avec une logique comme : 
-```c
-- Regarder si le philosophe est mort ( effectivement si il est mort il ne peut pas manger.
-- Il regarde si la fourchette de gauche et celle de droite sont disponible
-- Si elles sont disponible il les prends;
-- Il se met a manger
-- Quand il a fini de manger il depose les fouchettes
-- Ensuite il pense
-- Pour finir il dort 
-```
-
 ## Visualizer
 
 ```
@@ -340,6 +376,10 @@ Sources :
 - https://nafuka11.github.io/philosophers-visualizer/ 
 
 🚧🚧🚧🚧🚧🚧🚧🚧
+
+
+
+
 
 
 

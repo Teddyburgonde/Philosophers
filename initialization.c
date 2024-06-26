@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/28 20:53:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:20:32 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,29 @@ void initialization_forks(t_philo *philo)
 	
 	philo->left_fork->fork_is_available = 1;
 	philo->right_fork->fork_is_available = 1;
+}
+
+int	verif_initialization(t_data *data, char **argv, t_philo **philo)
+{
+	if (initialization_data(data, argv) != 0)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	if (initialization_mutex(data) != 0)
+	{
+		free(data->forks);
+		printf("Error\n");
+		return (1);
+	}
+	*philo = ft_calloc(data->number_of_philosophers, sizeof(t_philo));
+	if (initialization_philo(*philo, data) != 0)
+	{
+		printf("Error\n");
+		free(*philo);
+		free(data->forks);
+		return (1);
+	}
+	initialization_forks(*philo);
+	return (0);
 }

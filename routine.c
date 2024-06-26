@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/28 21:00:20 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:17:32 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,13 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%li} the philosopher %d eating\n", start_to_eat, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
+}
+
+void	*ft_routine(t_philo *philo)
+{
+	ft_taken_fork(philo);
+	ft_eat(philo);
+	ft_think(philo);
+	ft_sleep(philo);
+	return (NULL);
 }
