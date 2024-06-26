@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/28 21:00:44 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:38:34 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ size_t	get_current_time(void)
 }
 
 // ! le temps ecouler depuis le debut du programme
-long int	get_timestamp(long int start) {
+long int	get_timestamp(long int start)
+{
 	long int	timestamp;
 
 	timestamp = get_current_time() - start;

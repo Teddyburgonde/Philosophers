@@ -6,19 +6,19 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:20:32 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:41:08 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int initialization_philo(t_philo *philo, t_data *data)
+int	initialization_philo(t_philo *philo, t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->number_of_philosophers)
-	{	
+	{
 		philo[i].data = data;
 		philo[i].id_philo = i + 1;
 		//! nombre de repas mangé
@@ -36,7 +36,7 @@ int initialization_philo(t_philo *philo, t_data *data)
 	return (0);
 }
 
-int initialization_data(t_data *data, char **argv)
+int	initialization_data(t_data *data, char **argv)
 {
 	data->number_of_philosophers = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -56,7 +56,7 @@ int	initialization_mutex(t_data *data)
 	i = 0;
 	data->forks = malloc(sizeof(t_data) * data->number_of_philosophers);
 	while (i < data->number_of_philosophers)
-	{	
+	{
 		pthread_mutex_init(&data->forks->fork_mutex, NULL);
 		i++;
 	}
@@ -69,7 +69,6 @@ int	initialization_mutex(t_data *data)
 void initialization_forks(t_philo *philo)
 {
 	// ! la je dis que les forks ne sont pas disponibles.
-	
 	philo->left_fork->fork_is_available = 1;
 	philo->right_fork->fork_is_available = 1;
 }

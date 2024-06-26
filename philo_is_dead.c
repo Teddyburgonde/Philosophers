@@ -6,27 +6,27 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:32:09 by tebandam          #+#    #+#             */
-/*   Updated: 2024/05/23 11:34:14 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:39:44 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int 	check_philo_is_dead(t_philo *philo)
+int	check_philo_is_dead(t_philo *philo)
 {
 	if (philo->data->is_dead == 1)
 	{
 		pthread_mutex_lock(&philo->data->printf_mutex);
 		printf("The philosopher is dead\n");
-		pthread_mutex_unlock(&philo->data->printf_mutex);	
+		pthread_mutex_unlock(&philo->data->printf_mutex);
 		return (EXIT_FAILURE);
 	}
 	return (0);
 }
 
 int	is_philo_dead(t_philo *philo)
-{	
-	long int current_time;
+{
+	long int	current_time;
 
 	pthread_mutex_lock(&philo->data->is_dead_mutex);
 	if (philo->data->is_dead == 1)

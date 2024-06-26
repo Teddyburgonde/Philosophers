@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:26 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:27:21 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:40:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	create_thread_start_ft_routine(t_philo	*philo, t_data *data)
 
 	i = 0;
 	while (i < data->number_of_philosophers)
-	{	
+	{
 		philo[i].id_philo = i;
-		//! un philo doit avoir son propre pthread car cela lui permet de faire des actions en simultaner (manger, dormir, penser)
-		check = pthread_create(&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
+		check = pthread_create(
+				&philo->thread_id, NULL, (void *)ft_routine, &philo[i]);
 		if (check != 0)
 			return (-1);
 		i++;
