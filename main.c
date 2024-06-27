@@ -6,11 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 07:16:23 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:21:36 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+#include <stdlib.h>
 
 //! philosophers 5 800 200 200 7
 
@@ -29,20 +30,25 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	i = 0;
-	if (incorrect_number_arguments(argc) == 1)
+	if (incorrect_number_arguments(argc) == -1)
 		return (EXIT_FAILURE);
-	if (validate_arguments(argv) == 1)
+	if (check_is_number(argv) == -1)
 		return (EXIT_FAILURE);
-	if (verif_initialization(&data, argv, &philo) != 0)
+	if (initialization_data(&data, argv) == -1)
 		return (EXIT_FAILURE);
-	if (check_philo_is_dead(philo) == 1)
-		return (EXIT_FAILURE);
+	philo = ft_calloc(sizeof(t_philo), data.number_of_philosophers);
+	data.forks = ft_calloc(sizeof(t_fork), data.number_of_philosophers);
+	if (!philo || !data.forks)
+		return (-1);
 	check = create_thread_start_ft_routine(philo, &data);
 	if (check != 0)
+	{
+		free(philo);
+		free(data.forks);
 		return (EXIT_FAILURE);
-	check = 0; //! je dois le remettre a 0 ou pas ?
-	check = manage_thread(philo, &data);
-	if (check != 0)
-		return (EXIT_FAILURE);
-	cleanup_ressources(philo, &data);
+	}
+	// manage_thread(philo, &data);
+	free(philo);
+	free(data.forks);
+	// cleanup_ressources(philo, &data);
 }

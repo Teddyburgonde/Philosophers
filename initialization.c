@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 07:16:09 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:23:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,28 @@ int	initialization_philo(t_philo *philo, t_data *data)
 int	initialization_data(t_data *data, char **argv)
 {
 	data->number_of_philosophers = ft_atoi(argv[1]);
+	if (data->number_of_philosophers > 200 || data->number_of_philosophers <= 0)
+	{
+		ft_putstr_fd("Error\nYou can't have more than 200 philosophers!\n", 2);
+		return (-1);
+	}
 	data->time_to_die = ft_atoi(argv[2]);
+	if (data->time_to_die <= 0)
+	{
+		ft_putstr_fd("Error\nTime too short for time to die!\n", 2);
+		return (-1);
+	}
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
 	data->time_philo_must_eat = ft_atoi(argv[5]);
 	data->is_dead = 0;
 	data->philo_satiated = 0;
 	data->start_time = get_current_time();
+	if (data->start_time <= 0)
+	{
+		ft_putstr_fd("Error\nTime too short for start_time!\n", 2);
+		return (-1);
+	}	
 	return (0);
 }
 
@@ -54,7 +69,6 @@ int	initialization_mutex(t_data *data)
 	int	i;
 
 	i = 0;
-	data->forks = malloc(sizeof(t_data) * data->number_of_philosophers);
 	while (i < data->number_of_philosophers)
 	{
 		pthread_mutex_init(&data->forks->fork_mutex, NULL);
@@ -71,29 +85,4 @@ void	initialization_forks(t_philo *philo)
 	// ! la je dis que les forks ne sont pas disponibles.
 	philo->left_fork->fork_is_available = 1;
 	philo->right_fork->fork_is_available = 1;
-}
-
-int	verif_initialization(t_data *data, char **argv, t_philo **philo)
-{
-	if (initialization_data(data, argv) != 0)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	if (initialization_mutex(data) != 0)
-	{
-		free(data->forks);
-		printf("Error\n");
-		return (1);
-	}
-	*philo = ft_calloc(data->number_of_philosophers, sizeof(t_philo));
-	if (initialization_philo(*philo, data) != 0)
-	{
-		printf("Error\n");
-		free(*philo);
-		free(data->forks);
-		return (1);
-	}
-	initialization_forks(*philo);
-	return (0);
 }
