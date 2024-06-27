@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:37:34 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:42:49 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:18:43 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ static int	is_whitespace(char c)
 	return (0);
 }
 
+int	handle_sign(const char *nptr, int *i, int *sign)
+{
+	while (nptr[*i] == '+' || nptr[*i] == '-')
+	{
+		if (nptr[*i + 1] == '+')
+			return (0);
+		if (nptr[*i] == '-')
+			*sign *= -1;
+		if (nptr[*i + 1] == '-')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
 int	ft_atoi(const char *nptr)
 {
 	int	i;
@@ -35,18 +51,12 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	a = 0;
 	sign = 1;
+	if (!nptr)
+		return (-1);
 	while (is_whitespace(nptr[i]))
 		i++;
-	while (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i + 1] == '+')
-			return (0);
-		if (nptr[i] == '-')
-			sign *= -1;
-		if (nptr[i + 1] == '-')
-			return (0);
-		i++;
-	}
+	if (!handle_sign(nptr, &i, &sign))
+		return (0);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		a = a * 10 + (nptr[i] - '0');
