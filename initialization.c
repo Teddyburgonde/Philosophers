@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:41:08 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 07:16:09 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	initialization_mutex(t_data *data)
 	return (0);
 }
 
-void initialization_forks(t_philo *philo)
+void	initialization_forks(t_philo *philo)
 {
 	// ! la je dis que les forks ne sont pas disponibles.
 	philo->left_fork->fork_is_available = 1;

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:17:32 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 07:18:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,16 @@ void	ft_sleep(t_philo *philo)
 	start_to_sleep = get_timestamp(philo->data->start_time);
 	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("At {%li} the philosopher %d falls asleep\n",
-		start_to_sleep, philo->id_philo);
+		get_timestamp(philo->data->start_time), philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
-	while (ft_usleep(philo->data->start_time)
+	while (get_timestamp(philo->data->start_time)
 		- start_to_sleep < philo->data->time_to_sleep)
 	{
 		if (philo->data->is_dead == 1)
 			return ;
 		ft_usleep(500);
 	}
+	//! utiliser ma fonction ou la vrai pour ft_usleep
 }
 
 void	ft_think(t_philo *philo)
@@ -74,6 +75,7 @@ void	ft_think(t_philo *philo)
 void	ft_eat(t_philo *philo)
 {
 	long int	start_to_eat;
+
 	if (philo->data->is_dead == 1)
 		return ;
 	start_to_eat = get_timestamp(philo->data->start_time);
@@ -82,12 +84,12 @@ void	ft_eat(t_philo *philo)
 	// pthread_mutex_lock(&philo->left_fork->fork_mutex);
 	// printf("At {%li} the philosopher %d take the left fork\n", start_to_eat, philo->id_philo);
 	// pthread_mutex_unlock(&philo->data->printf_mutex);
-	
 	// pthread_mutex_lock(&philo->right_fork->fork_mutex);
 	// printf("At {%li} the philosopher %d take the right fork\n", start_to_eat, philo->id_philo);
 	// pthread_mutex_unlock(&philo->data->printf_mutex);
 	pthread_mutex_lock(&philo->data->printf_mutex);
-	printf("At {%li} the philosopher %d eating\n", start_to_eat, philo->id_philo);
+	printf("At {%li} the philosopher %d eating\n",
+		start_to_eat, philo->id_philo);
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
 

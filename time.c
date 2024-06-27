@@ -6,20 +6,26 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:38:34 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 07:15:53 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 // ! l'heure actuel 
-size_t	get_current_time(void)
+long int	get_current_time(void)
 {
 	struct timeval	time;
+	int				save;
 
+	save = 0;
 	if (gettimeofday(&time, NULL) == -1)
+	{
 		write(2, "gettimeofday() error\n", 22);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+		return (-1);
+	}
+	save = time.tv_sec * 1000 + time.tv_usec / 1000;
+	return (save);
 }
 
 // ! le temps ecouler depuis le debut du programme

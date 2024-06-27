@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:37:50 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 06:52:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		initialization_forks(t_philo *philo);
 */
 
 int			ft_usleep(size_t milliseconds);
-size_t		get_current_time(void);
+long int	get_current_time(void);
 long int	get_timestamp(long int start);
 
 /*

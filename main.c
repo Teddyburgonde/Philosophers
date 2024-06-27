@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/26 08:41:35 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 07:16:23 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 	int		check;
 	int		i;
-	
+
 	philo = NULL;
 	i = 0;
 	if (incorrect_number_arguments(argc) == 1)
