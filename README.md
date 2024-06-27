@@ -241,6 +241,7 @@ Errors :
 
 Voila ma structure : 
 
+```c
 typedef struct s_fork{
 	int	mutex_id;
 	pthread_mutex_t fork_mutex;
@@ -271,6 +272,7 @@ typedef struct s_philo{
 	t_fork	*left_fork;
 	t_fork	*right_fork;
 }	t_philo;
+```
 
 ## Initialisation des structures 
 Pour philo
