@@ -197,11 +197,11 @@ Gestion des threads :
 - Creation des threads pour chaque philosophers et lancer les threads ( Lancer ft_routine )
 - Creation des routines : manger, dormir , penser.
 
-Gestion de la mort d'un philosopher 
+Gestion de la mort d'un philosopher :
 
 - Creation d'une fonction qui regarde si le philosopher est mort ou pas.
 
-Gestion du sommeil 
+Gestion du sommeil :
 
 - Creation de sa propre fonction ft_usleep
 
