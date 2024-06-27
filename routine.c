@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 07:18:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:12:59 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void	ft_eat(t_philo *philo)
 void	*ft_routine(t_philo *philo)
 {
 	ft_taken_fork(philo);
-	ft_eat(philo);
-	ft_think(philo);
-	ft_sleep(philo);
+	// ft_eat(philo);
+	// ft_think(philo);
+	// ft_sleep(philo);
 	return (NULL);
 }

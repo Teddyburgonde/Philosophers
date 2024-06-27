@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 16:21:36 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:04:12 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 {
 	t_philo	*philo;
 	t_data	data;
-	int		check;
+	//int		check;
 	int		i;
 
 	philo = NULL;
@@ -40,15 +40,22 @@ int	main(int argc, char **argv)
 	data.forks = ft_calloc(sizeof(t_fork), data.number_of_philosophers);
 	if (!philo || !data.forks)
 		return (-1);
-	check = create_thread_start_ft_routine(philo, &data);
-	if (check != 0)
-	{
-		free(philo);
-		free(data.forks);
-		return (EXIT_FAILURE);
-	}
-	// manage_thread(philo, &data);
+	if (initialization_mutex(&data, data.number_of_philosophers) == -1)
+		return (-1);
+
+	
+	//initialization_philo(philo, &data);
+	//initialization_forks(philo);
+	// check = manage_thread_start_ft_routine(philo, &data);
+	// if (check != 0)
+	// {
+	// 	free(philo);
+	// 	free(data.forks);
+	// 	return (EXIT_FAILURE);
+	// }
+	// // manage_thread(philo, &data);
 	free(philo);
 	free(data.forks);
-	// cleanup_ressources(philo, &data);
+	return (EXIT_SUCCESS);
+	// // cleanup_ressources(philo, &data);
 }

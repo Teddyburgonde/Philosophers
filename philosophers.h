@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 16:01:42 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:03:25 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,8 @@ int			incorrect_number_arguments(int argc);
 
 int			initialization_philo(t_philo *philo, t_data *data);
 int			initialization_data(t_data *data, char **argv);
-int			initialization_mutex(t_data *data);
 void		initialization_forks(t_philo *philo);
-
+int			initialization_mutex(t_data *data, int nb_philo);
 /*
 * time
 */
@@ -98,8 +97,7 @@ long int	get_timestamp(long int start);
 * Thread
 */
 
-int			create_thread_start_ft_routine(t_philo	*philo, t_data *data);
-int			manage_thread(t_philo *philo, t_data *data);
+int			manage_thread_start_ft_routine(t_philo	*philo, t_data *data);
 
 /*
 * Routine
@@ -114,7 +112,8 @@ void		*ft_routine(t_philo *philo);
 /*
 * free
 */
-void		cleanup_ressources(t_philo *philo, t_data *data);
+
+void	destroy_mutex(t_philo *philo, t_data *data);
 
 /*
 * dead

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 16:23:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:57:24 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,48 @@ int	initialization_data(t_data *data, char **argv)
 	return (0);
 }
 
-int	initialization_mutex(t_data *data)
+int	initialization_mutex(t_data *data, int nb_philo)
 {
 	int	i;
+	int	check;
 
 	i = 0;
-	while (i < data->number_of_philosophers)
+	while (i < nb_philo)
 	{
-		pthread_mutex_init(&data->forks->fork_mutex, NULL);
+		check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
+		if (check != 0)
+			return (-1);
 		i++;
 	}
-	pthread_mutex_init(&data->is_dead_mutex, NULL);
-	pthread_mutex_init(&data->philo_satiated_mutex, NULL);
-	pthread_mutex_init(&data->printf_mutex, NULL);
+	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
+	if (check != 0)
+		return (-1);
+	check = pthread_mutex_init(&data->philo_satiated_mutex, NULL);
+	if (check != 0)
+		return (-1);
+	check = pthread_mutex_init(&data->printf_mutex, NULL);
+	if (check != 0)
+		return (-1);
 	return (0);
 }
 
 void	initialization_forks(t_philo *philo)
 {
-	// ! la je dis que les forks ne sont pas disponibles.
-	philo->left_fork->fork_is_available = 1;
-	philo->right_fork->fork_is_available = 1;
+	while (philo->nb_forks < 2)
+	{
+		pthread_mutex_lock(&philo->left_fork->fork_mutex);
+		if (philo->left_fork->fork_is_available == 0)
+		{
+			philo->left_fork->fork_is_available = 1;
+			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+		}
+		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+		pthread_mutex_lock(&philo->right_fork->fork_mutex);
+		if (philo->right_fork->fork_is_available == 0)
+		{
+			philo->right_fork->fork_is_available = 1;
+			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+		}
+		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+	}
 }

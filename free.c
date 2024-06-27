@@ -6,13 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 10:06:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:21:39 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	cleanup_ressources(t_philo *philo, t_data *data)
+void	destroy_mutex(t_philo *philo, t_data *data)
 {
 	// int	i;
 
