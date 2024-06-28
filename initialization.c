@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 21:57:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:22:35 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	initialization_philo(t_philo *philo, t_data *data)
 {
 	int	i;
 
+	if (!philo || !data || !data->forks)
+		return (-1);
 	i = 0;
 	while (i < data->number_of_philosophers)
 	{
@@ -60,7 +62,7 @@ int	initialization_data(t_data *data, char **argv)
 	{
 		ft_putstr_fd("Error\nTime too short for start_time!\n", 2);
 		return (-1);
-	}	
+	}
 	return (0);
 }
 
@@ -89,23 +91,26 @@ int	initialization_mutex(t_data *data, int nb_philo)
 	return (0);
 }
 
-void	initialization_forks(t_philo *philo)
+int	initialization_forks(t_philo *philo)
 {
 	while (philo->nb_forks < 2)
 	{
-		pthread_mutex_lock(&philo->left_fork->fork_mutex);
+		if (pthread_mutex_lock(&philo->left_fork->fork_mutex) != 0)
+			return (-1);
 		if (philo->left_fork->fork_is_available == 0)
 		{
 			philo->left_fork->fork_is_available = 1;
-			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+			philo->nb_forks++;
 		}
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-		pthread_mutex_lock(&philo->right_fork->fork_mutex);
+		if (pthread_mutex_lock(&philo->right_fork->fork_mutex) != 0)
+			return (-1);
 		if (philo->right_fork->fork_is_available == 0)
 		{
 			philo->right_fork->fork_is_available = 1;
-			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+			philo->nb_forks++;
 		}
 		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 	}
+	return (0);
 }

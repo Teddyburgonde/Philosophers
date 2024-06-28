@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 22:03:25 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:04:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			incorrect_number_arguments(int argc);
 
 int			initialization_philo(t_philo *philo, t_data *data);
 int			initialization_data(t_data *data, char **argv);
-void		initialization_forks(t_philo *philo);
+int			initialization_forks(t_philo *philo);
 int			initialization_mutex(t_data *data, int nb_philo);
 /*
 * time

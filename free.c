@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 20:21:39 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:22:56 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	destroy_mutex(t_philo *philo, t_data *data)
 {
 	// int	i;
-
 	// i = 0;
 	// while (i < data->number_of_philosophers)
 	// {
