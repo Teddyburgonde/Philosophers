@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 07:15:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:31:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 long int	get_current_time(void)
 {
 	struct timeval	time;
-	int				save;
+	long int		save;
 
-	save = 0;
 	if (gettimeofday(&time, NULL) == -1)
 	{
 		write(2, "gettimeofday() error\n", 22);
 		return (-1);
 	}
-	save = time.tv_sec * 1000 + time.tv_usec / 1000;
+	save = (time.tv_sec * 1000) + (time.tv_usec / 1000);
 	return (save);
 }
 

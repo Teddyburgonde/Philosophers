@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/28 10:17:34 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:35:12 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,28 +89,4 @@ int	initialization_mutex(t_data *data, int nb_philo)
 	if (check != 0)
 		return (-1);
 	return (0);
-}
-
-int	initialization_forks(t_philo *philo)
-{
-	while (philo->nb_forks < 2)
-	{
-		if (pthread_mutex_lock(&philo->left_fork->fork_mutex) != 0)
-			return (-1);
-		if (philo->left_fork->fork_is_available == 0)
-		{
-			philo->left_fork->fork_is_available = 1;
-			philo->nb_forks++;
-		}
-		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-		if (pthread_mutex_lock(&philo->right_fork->fork_mutex) != 0)
-			return (-1);
-		if (philo->right_fork->fork_is_available == 0)
-		{
-			philo->right_fork->fork_is_available = 1;
-			philo->nb_forks++;
-		}
-		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
-	}
-	return (0);
-}
+} 
