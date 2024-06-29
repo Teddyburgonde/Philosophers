@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/28 09:04:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/29 06:19:02 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@
 * Structures
 */
 
-typedef struct s_fork{
+typedef struct s_fork
+{
 	int					fork_is_available;
 	pthread_mutex_t		fork_mutex;
-}t_fork;
+}	t_fork;
 
-typedef struct s_data{
+typedef struct s_data
+{
 	int					number_of_philosophers;
 	int					time_to_sleep;
 	int					time_to_eat;
@@ -42,7 +44,8 @@ typedef struct s_data{
 	pthread_mutex_t		printf_mutex;
 }	t_data;
 
-typedef struct s_philo{
+typedef struct s_philo
+{
 	t_data				*data;
 	int					id_philo;
 	int					nb_meals_eaten;
@@ -113,7 +116,7 @@ void		*ft_routine(t_philo *philo);
 * free
 */
 
-void	destroy_mutex(t_philo *philo, t_data *data);
+void		destroy_mutex(t_philo *philo, t_data *data);
 
 /*
 * dead
@@ -121,5 +124,12 @@ void	destroy_mutex(t_philo *philo, t_data *data);
 
 int			is_philo_dead(t_philo *philo);
 int			check_philo_is_dead(t_philo *philo);
+
+/*
+* print
+*/
+
+void		printf_for_take_fork(t_philo *philo,
+				t_fork *fork, int is_left_fork);
 
 #endif 

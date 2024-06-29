@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_thread.c                                    :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 08:24:26 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:14:47 by tebandam         ###   ########.fr       */
+/*   Created: 2024/06/29 06:08:46 by tebandam          #+#    #+#             */
+/*   Updated: 2024/06/29 06:11:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	manage_thread_start_ft_routine(t_philo	*philo, t_data *data)
+void	printf_for_take_fork(t_philo *philo, t_fork *fork, int is_left_fork)
 {
-	int	i;
-	int	check;
-
-	i = 0;
-	check = 0;
-	while (i < data->number_of_philosophers)
+	if (is_left_fork)
 	{
-		if (pthread_create(&philo[i].thread_id,
-				NULL, (void *)ft_routine, &philo[i]) != 0)
-			return (-1);
-		i++;
+		printf("At {%li} the philosopher %d take the left forks \n",
+			get_timestamp(philo->data->start_time), philo->id_philo);
 	}
-	i = 0;
-	while (i < data->number_of_philosophers)
+	else
 	{
-		if (pthread_join(philo[i].thread_id, NULL) != 0)
-			return (-1);
-		i++;
+		printf("At {%li} the philosopher %d take the right forks \n",
+			get_timestamp(philo->data->start_time), philo->id_philo);
 	}
-	return (0);
+	fork->fork_is_available = 1;
 }

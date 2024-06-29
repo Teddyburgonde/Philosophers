@@ -22,6 +22,7 @@ SRCS = error.c \
 		time.c \
 		manage_thread.c \
 		utils_for_memory.c \
+		print.c \
 		main.c 
 
 

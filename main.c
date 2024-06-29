@@ -6,15 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/28 15:13:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/29 06:24:51 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-#include <stdlib.h>
 
 //! philosophers 5 800 200 200 7
-
 // number_of_philosophers
 // time_to_die
 // time_to_eat 
@@ -29,9 +27,7 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	check = 0;
-	if (incorrect_number_arguments(argc) == -1)
-		return (-1);
-	if (check_is_number(argv) == -1)
+	if (incorrect_number_arguments(argc) == -1 || check_is_number(argv) == -1)
 		return (-1);
 	if (initialization_data(&data, argv) == -1)
 		return (-1);
@@ -39,9 +35,8 @@ int	main(int argc, char **argv)
 	data.forks = ft_calloc(sizeof(t_fork), data.number_of_philosophers);
 	if (!philo || !data.forks)
 		return (-1);
-	if (initialization_mutex(&data, data.number_of_philosophers) == -1)
-		return (-1);
-	if (initialization_philo(philo, &data) == -1)
+	if (initialization_mutex(&data, data.number_of_philosophers) == -1
+		|| initialization_philo(philo, &data) == -1)
 		return (-1);
 	//! No leak, no conditional jump, everything's fine ok 😊
 	if (manage_thread_start_ft_routine(philo, &data) == -1)

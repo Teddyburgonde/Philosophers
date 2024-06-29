@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:37:34 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 09:18:43 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/29 06:17:50 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	handle_sign(const char *nptr, int *i, int *sign)
 	}
 	return (1);
 }
-
 
 int	ft_atoi(const char *nptr)
 {

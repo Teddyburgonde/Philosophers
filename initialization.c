@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/28 15:35:12 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/29 06:15:20 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	initialization_philo(t_philo *philo, t_data *data)
 	{
 		philo[i].data = data;
 		philo[i].id_philo = i + 1;
-		//! nombre de repas mangé
 		philo[i].nb_meals_eaten = 0;
 		philo[i].nb_forks = 0;
 		philo[i].left_fork = &data->forks[i];
@@ -89,4 +88,4 @@ int	initialization_mutex(t_data *data, int nb_philo)
 	if (check != 0)
 		return (-1);
 	return (0);
-} 
+}
