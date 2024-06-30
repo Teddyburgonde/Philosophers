@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:19:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:44:05 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void		*ft_calloc(size_t nmemb, size_t size);
 */
 
 int			check_is_number(char **argv);
-int			check_is_number_valid(char **argv);
-int			validate_arguments(char **argv);
 int			incorrect_number_arguments(int argc);
 
 /*
@@ -86,7 +84,6 @@ int			incorrect_number_arguments(int argc);
 
 int			initialization_philo(t_philo *philo, t_data *data);
 int			initialization_data(t_data *data, char **argv);
-int			initialization_forks(t_philo *philo);
 int			initialization_mutex(t_data *data, int nb_philo);
 /*
 * time
@@ -116,7 +113,7 @@ void		*ft_routine(t_philo *philo);
 * free
 */
 
-void		destroy_mutex(t_philo *philo, t_data *data);
+void		destroy_all_mutex(t_philo *philo, t_data *data);
 
 /*
 * dead

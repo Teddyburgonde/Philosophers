@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 17:38:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:40:56 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int	main(int argc, char **argv)
 		return (-1);
 	free(philo);
 	free(data.forks);
-	//? destroy_mutex(philo, &data); ou pas ???
+	destroy_all_mutex(philo, &data);
 	return (0);
 }
