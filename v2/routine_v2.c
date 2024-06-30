@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 17:14:38 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/30 14:25:02 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	try_to_take_fork(t_philo *philo, t_fork *fork, char *fork_str)
 	pthread_mutex_unlock(&fork->fork_mutex);
 }
 
-void	ft_taken_fork(t_philo *philo)
+void	taken_fork(t_philo *philo)
 {
 	while (philo->nb_forks < 2)
 	{
@@ -88,7 +88,7 @@ void	*ft_routine(t_philo *philo)
 	{
 		usleep(50);
 	}
-	ft_taken_fork(philo);
+	taken_fork(philo);
 	//ft_eat(philo);
 	// ft_think(philo);
 	// ft_sleep(philo);

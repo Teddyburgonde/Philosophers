@@ -6,13 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:17:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/30 14:46:06 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	ft_taken_fork(t_philo *philo)
+void	taken_fork(t_philo *philo)
 {
 	while (philo->nb_forks < 2)
 	{
@@ -70,10 +70,10 @@ void	ft_think(t_philo *philo)
 
 void	ft_eat(t_philo *philo)
 {
-	if (philo->data->is_dead == 1)
+	long int start_
+	if (check_philo_is_dead(philo) == -1)
 		return ;
-	if (philo->nb_forks == 2)
-	{
+	
 		pthread_mutex_lock(&philo->data->printf_mutex);
 		printf("At {%li} the philosopher %d is eating\n",
 			get_timestamp(philo->data->start_time), philo->id_philo);
@@ -85,13 +85,35 @@ void	ft_eat(t_philo *philo)
 	}
 }
 
+int	check_philo_is_dead(t_philo *philo)
+{
+	if (philo->data->is_dead == 1)
+	{
+		print_message(philo, "dead");
+		return (-1);
+	}
+	return (0);
+}
+
+void	eat(t_philo *philo)
+{
+	if (check_philo_is_dead(philo) == -1)
+		return ;
+	taken_fork(philo);
+	if (philo->nb_forks == 2)
+	{
+		action_eat()
+	}
+	
+}
+
 void	*ft_routine(t_philo *philo)
 {
 	if (philo->id_philo % 2 == 0)
 	{
 		usleep(50);
 	}
-	ft_taken_fork(philo);
+	taken_fork(philo);
 	//ft_eat(philo);
 	// ft_think(philo);
 	// ft_sleep(philo);

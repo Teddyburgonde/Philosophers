@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 06:08:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:11:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/06/30 14:18:55 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,11 @@ void	printf_for_take_fork(t_philo *philo, t_fork *fork, int is_left_fork)
 			get_timestamp(philo->data->start_time), philo->id_philo);
 	}
 	fork->fork_is_available = 1;
+}
+
+void	print_message(t_philo *philo, char *state)
+{
+	pthread_mutex_lock(&philo->data->printf_mutex);
+	printf("The philosopher is %s\n", state);
+	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
