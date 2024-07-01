@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 15:55:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:00:07 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	eat(t_philo *philo)
 
 void	*ft_routine(t_philo *philo)
 {
+	// mettre une boucle
 	if (philo->id_philo % 2 == 0)
 	{
 		usleep(500);
