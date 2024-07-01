@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 11:25:29 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/01 15:55:24 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,25 @@ void	taken_fork(t_philo *philo)
 void	philosopher_is_eating(t_philo *philo)
 {
 	long int start_of_meal;
+	long int	current_time;
 
 	if (check_philo_is_dead(philo) == -1)
 		return ;
 	start_of_meal = get_timestamp(philo->data->start_time);
+	current_time = get_timestamp(philo->data->start_time);
 	print_message(philo, "eating");
 	philo->nb_forks = 0;
 	philo->nb_meals_eaten++;
-	ft_usleep(500);
-	while (philo->data->start_time - start_of_meal < philo->data->time_to_eat)
+	while (current_time - start_of_meal < philo->data->time_to_eat)
 	{
+		//printf("start_of_meal : %ld current_time : %ld time_to_eat : %d\n", start_of_meal, current_time, philo->data->time_to_eat);
+		
 		if (check_philo_is_dead(philo) == -1)
 		{
 			usleep(500);
 			return ;
 		}
+		current_time = get_timestamp(philo->data->start_time);
 	}
 }
 
@@ -62,9 +66,7 @@ void	eat(t_philo *philo)
 
 	if (check_philo_is_dead(philo) == -1)
 		return ;
-	taken_fork(philo);
-	if (philo->nb_forks == 2)
-		philosopher_is_eating(philo);
+	philosopher_is_eating(philo);
 	check_and_update_satiety_of_philosopher(philo);
 	start_of_meal = get_timestamp(philo->data->start_time);
 	make_forks_unavailable(philo);
@@ -76,6 +78,9 @@ void	*ft_routine(t_philo *philo)
 	{
 		usleep(500);
 	}
+	//! take_forks par pitie et je t'en supplie
+	//! change la logique des return lorsqu'un philo meurt, par pitie, actuellement tu n'as aucun moyen de savoir si une fonction a return car un philo est mort.
+	
 	taken_fork(philo);
 	eat(philo);
 	// ft_think(philo);
