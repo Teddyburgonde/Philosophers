@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:15:20 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/01 09:34:27 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	initialization_data(t_data *data, char **argv)
 	}
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
-	data->time_philo_must_eat = ft_atoi(argv[5]);
+	data->nb_of_times_philo_must_eat = ft_atoi(argv[5]);
 	data->is_dead = 0;
 	data->philo_satiated = 0;
 	data->start_time = get_current_time();

@@ -250,7 +250,7 @@ typedef struct s_data{
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	time_philo_must_eat;
+	int	nb_of_times_philo_must_eat;
 	int	is_dead;
 	int	philo_satiated;
 	long int	start_time;

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:32:09 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/30 13:15:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/01 07:43:28 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	check_philo_is_dead(t_philo *philo)
 {
 	if (philo->data->is_dead == 1)
 	{
-		pthread_mutex_lock(&philo->data->printf_mutex);
-		printf("The philosopher is dead\n");
-		pthread_mutex_unlock(&philo->data->printf_mutex);
+		print_message(philo, "dead");
 		return (-1);
 	}
 	return (0);

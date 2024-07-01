@@ -18,11 +18,11 @@ SRCS = error.c \
 		parsing_number.c \
 		philo_is_dead.c \
 		routine.c \
-		free.c \
 		time.c \
 		manage_thread.c \
 		utils_for_memory.c \
 		print.c \
+		utils_for_manage_philosophers.c \
 		main.c 
 
 

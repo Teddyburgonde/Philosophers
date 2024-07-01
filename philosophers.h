@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/30 14:25:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:21:57 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 	int					time_to_sleep;
 	int					time_to_eat;
 	int					time_to_die;
-	int					time_philo_must_eat;
+	int					nb_of_times_philo_must_eat;
 	int					is_dead;
 	int					philo_satiated;
 	long int			start_time;
@@ -70,6 +70,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 void		*ft_memset(void *s, int c, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
+void		destroy_all_mutex(t_philo *philo, t_data *data);
 
 /*
 * Parsing
@@ -113,7 +114,12 @@ void		*ft_routine(t_philo *philo);
 * free
 */
 
-void		destroy_all_mutex(t_philo *philo, t_data *data);
+/*
+* manage philosophers
+*/
+
+void		check_and_update_satiety_of_philosopher(t_philo *philo);
+void		make_forks_unavailable(t_philo *philo);
 
 /*
 * dead
