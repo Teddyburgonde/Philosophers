@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 18:51:58 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:57:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 // time_to_eat 
 // time_to_sleep
 // [number_of_times_each_philosopher_must_eat]
+
+
+//! Error 
+//! change la logique des return lorsqu'un philo meurt, par pitie, actuellement
+// tu n'as aucun moyen de savoir si une fonction a return car un philo est mort.
 
 int	main(int argc, char **argv)
 {

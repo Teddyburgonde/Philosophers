@@ -6,13 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 16:00:07 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:59:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	taken_fork(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
 	while (philo->nb_forks < 2)
 	{
@@ -49,8 +49,6 @@ void	philosopher_is_eating(t_philo *philo)
 	philo->nb_meals_eaten++;
 	while (current_time - start_of_meal < philo->data->time_to_eat)
 	{
-		//printf("start_of_meal : %ld current_time : %ld time_to_eat : %d\n", start_of_meal, current_time, philo->data->time_to_eat);
-		
 		if (check_philo_is_dead(philo) == -1)
 		{
 			usleep(500);
@@ -74,18 +72,18 @@ void	eat(t_philo *philo)
 
 void	*ft_routine(t_philo *philo)
 {
-	// mettre une boucle
+	
 	if (philo->id_philo % 2 == 0)
 	{
 		usleep(500);
 	}
-	//! take_forks par pitie et je t'en supplie
-	//! change la logique des return lorsqu'un philo meurt, par pitie, actuellement tu n'as aucun moyen de savoir si une fonction a return car un philo est mort.
-	
-	taken_fork(philo);
-	eat(philo);
-	// ft_think(philo);
+	while (1)
+	{
+		take_forks(philo);
+		eat(philo);
+	}
 	// ft_sleep(philo);
+	// ft_think(philo);
 	return (NULL);
 }
 

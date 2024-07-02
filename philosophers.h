@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 11:21:57 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:58:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int			manage_thread_start_ft_routine(t_philo	*philo, t_data *data);
 void		ft_sleep(t_philo *philo);
 void		ft_think(t_philo *philo);
 void		ft_eat(t_philo *philo);
-void		taken_fork(t_philo *philo);
+void		take_forks(t_philo *philo);
 void		*ft_routine(t_philo *philo);
 
 /*
