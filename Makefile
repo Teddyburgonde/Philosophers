@@ -13,17 +13,18 @@ LDFLAGS = -lpthread
 #============= MANDATORY SOURCES =============#
 
 SRCS = error.c \
-		utils_for_parsing.c \
 		initialization.c \
 		parsing_number.c \
 		philo_is_dead.c \
 		routine.c \
 		time.c \
 		manage_thread.c \
-		utils_for_memory.c \
 		print.c \
-		utils_for_manage_philosophers.c \
-		main.c 
+		main.c \
+		utils/manage_philosophers_utils.c \
+		utils/routine_utils.c \
+		utils/memory_utils.c \
+		utils/parsing_utils.c \
 
 
 #============ TRANSFORM .c TO .o ============#

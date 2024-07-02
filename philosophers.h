@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 18:58:29 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:26:51 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,6 @@ typedef struct s_philo
 	t_fork				*left_fork;
 	t_fork				*right_fork;
 }	t_philo;
-
-/*
-* Utils for parsing
-*/
-
-int			ft_atoi(const char *nptr);
-int			ft_isdigit(int c);
-void		ft_putstr_fd(char *s, int fd);
-
-/*
-* Utils for memory
-*/
-
-void		*ft_memset(void *s, int c, size_t n);
-void		*ft_calloc(size_t nmemb, size_t size);
-void		destroy_all_mutex(t_philo *philo, t_data *data);
 
 /*
 * Parsing
@@ -135,5 +119,28 @@ int			check_philo_is_dead(t_philo *philo);
 void		printf_for_take_fork(t_philo *philo,
 				t_fork *fork, int is_left_fork);
 void		print_message(t_philo *philo, char *state);
+
+
+/*
+* utils for routine
+*/
+
+void	philosopher_is_eating(t_philo *philo);
+
+/*
+* Utils for parsing
+*/
+
+int			ft_atoi(const char *nptr);
+int			ft_isdigit(int c);
+void		ft_putstr_fd(char *s, int fd);
+
+/*
+* Utils for memory
+*/
+
+void		*ft_memset(void *s, int c, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+void		destroy_all_mutex(t_philo *philo, t_data *data);
 
 #endif 

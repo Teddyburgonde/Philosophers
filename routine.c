@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 18:59:01 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:22:34 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,6 @@ void	take_forks(t_philo *philo)
 			philo->nb_forks++;
 		}
 		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
-	}
-}
-
-void	philosopher_is_eating(t_philo *philo)
-{
-	long int start_of_meal;
-	long int	current_time;
-
-	if (check_philo_is_dead(philo) == -1)
-		return ;
-	start_of_meal = get_timestamp(philo->data->start_time);
-	current_time = get_timestamp(philo->data->start_time);
-	print_message(philo, "eating");
-	philo->nb_forks = 0;
-	philo->nb_meals_eaten++;
-	while (current_time - start_of_meal < philo->data->time_to_eat)
-	{
-		if (check_philo_is_dead(philo) == -1)
-		{
-			usleep(500);
-			return ;
-		}
-		current_time = get_timestamp(philo->data->start_time);
 	}
 }
 

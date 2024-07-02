@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_for_memory.c                                 :+:      :+:    :+:   */
+/*   memory_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 08:30:29 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 10:57:27 by tebandam         ###   ########.fr       */
+/*   Created: 2024/07/02 19:21:22 by tebandam          #+#    #+#             */
+/*   Updated: 2024/07/02 19:35:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include <philosophers.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_for_parsing.c                                :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 12:37:34 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/29 06:17:50 by tebandam         ###   ########.fr       */
+/*   Created: 2024/07/02 19:21:51 by tebandam          #+#    #+#             */
+/*   Updated: 2024/07/02 19:35:17 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include <philosophers.h>
 
 int	ft_isdigit(int c)
 {
