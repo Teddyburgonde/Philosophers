@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 19:26:51 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:25:50 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int			manage_thread_start_ft_routine(t_philo	*philo, t_data *data);
 */
 
 void		ft_sleep(t_philo *philo);
-void		ft_think(t_philo *philo);
 void		ft_eat(t_philo *philo);
 void		take_forks(t_philo *philo);
 void		*ft_routine(t_philo *philo);
@@ -125,7 +124,7 @@ void		print_message(t_philo *philo, char *state);
 * utils for routine
 */
 
-void	philosopher_is_eating(t_philo *philo);
+void		philosopher_is_eating(t_philo *philo);
 
 /*
 * Utils for parsing

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 19:22:34 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:26:23 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	take_forks(t_philo *philo)
 	}
 }
 
-void	eat(t_philo *philo)
+void	ft_eat(t_philo *philo)
 {
 	long int start_of_meal;
 
@@ -47,6 +47,24 @@ void	eat(t_philo *philo)
 	make_forks_unavailable(philo);
 }
 
+void	ft_sleep(t_philo *philo)
+{
+	long int current_time;
+	
+	if (check_philo_is_dead(philo))
+		return ;
+	current_time = get_timestamp(philo->data->start_time);
+	print_message(philo, "sleeping");
+	while (get_timestamp(philo->data->start_time) - current_time < philo->data->time_to_sleep)
+	{
+		if (check_philo_is_dead(philo))
+			return ;
+		usleep(500);
+	}
+	if (!check_philo_is_dead(philo))
+		print_message(philo, "thinking");
+}
+
 void	*ft_routine(t_philo *philo)
 {
 	
@@ -54,45 +72,8 @@ void	*ft_routine(t_philo *philo)
 	{
 		usleep(500);
 	}
-	while (1)
-	{
-		take_forks(philo);
-		eat(philo);
-	}
-	// ft_sleep(philo);
-	// ft_think(philo);
+	take_forks(philo);
+	ft_eat(philo);
+	ft_sleep(philo);
 	return (NULL);
 }
-
-// void	ft_sleep(t_philo *philo)
-// {
-// 	long int	start_to_sleep;
-
-// 	if (philo->data->is_dead == 1)
-// 		return ;
-// 	start_to_sleep = get_timestamp(philo->data->start_time);
-// 	pthread_mutex_lock(&philo->data->printf_mutex);
-// 	printf("At {%li} the philosopher %d falls asleep\n",
-// 		get_timestamp(philo->data->start_time), philo->id_philo);
-// 	pthread_mutex_unlock(&philo->data->printf_mutex);
-// 	while (get_timestamp(philo->data->start_time)
-// 		- start_to_sleep < philo->data->time_to_sleep)
-// 	{
-// 		if (philo->data->is_dead == 1)
-// 			return ;
-// 		ft_usleep(500);
-// 	}
-// }
-
-// void	ft_think(t_philo *philo)
-// {
-// 	long int	start_to_think;
-
-// 	if (philo->data->is_dead == 1)
-// 		return ;
-// 	start_to_think = get_timestamp(philo->data->start_time);
-// 	pthread_mutex_lock(&philo->data->printf_mutex);
-// 	printf("At {%li} the philosopher %d thinking\n",
-// 		start_to_think, philo->id_philo);
-// 	pthread_mutex_unlock(&philo->data->printf_mutex);
-// }
