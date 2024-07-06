@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 18:57:29 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:58:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,28 @@
 // time_to_sleep
 // [number_of_times_each_philosopher_must_eat]
 
+int	check_number_size(int argc, char **argv)
+{
+	int	i;
 
-//! Error 
-//! change la logique des return lorsqu'un philo meurt, par pitie, actuellement
-// tu n'as aucun moyen de savoir si une fonction a return car un philo est mort.
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_atoi(argv[i]) < 0)
+		{
+			ft_putstr_fd("Error\nOverflow\n", 2);
+			return (-1);
+		}
+		else if (ft_atoi(argv[i]) == 0)
+		{
+			ft_putstr_fd("Error\n0 is not allowed\n", 2);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -32,7 +50,8 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	check = 0;
-	if (incorrect_number_arguments(argc) == -1 || check_is_number(argv) == -1)
+	if (incorrect_number_arguments(argc) == -1 || check_is_number(argv) == -1
+		|| check_number_size(argc, argv) == -1)
 		return (-1);
 	if (initialization_data(&data, argv) == -1)
 		return (-1);
@@ -46,8 +65,8 @@ int	main(int argc, char **argv)
 	//! No leak, no conditional jump, everything's fine ok 😊
 	if (manage_thread_start_ft_routine(philo, &data) == -1)
 		return (-1);
+	// destroy_all_mutex(philo, &data);
 	free(philo);
 	free(data.forks);
-	//destroy_all_mutex(philo, &data);
 	return (0);
 }

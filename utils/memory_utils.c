@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:21:22 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 19:35:21 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:49:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t			i;
-	char			*tab;
+	size_t		i;
+	char		*tab;
 
 	tab = s;
 	i = 0;

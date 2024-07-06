@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/03 10:25:50 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:11:26 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,7 @@ int			check_philo_is_dead(t_philo *philo);
 * print
 */
 
-void		printf_for_take_fork(t_philo *philo,
-				t_fork *fork, int is_left_fork);
+void		printf_for_take_fork(t_philo *philo, t_fork *fork);
 void		print_message(t_philo *philo, char *state);
 
 

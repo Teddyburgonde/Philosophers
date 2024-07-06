@@ -6,13 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:09:16 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/28 15:31:29 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:49:46 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-// ! l'heure actuel 
 long int	get_current_time(void)
 {
 	struct timeval	time;
@@ -27,7 +26,6 @@ long int	get_current_time(void)
 	return (save);
 }
 
-// ! le temps ecouler depuis le debut du programme
 long int	get_timestamp(long int start)
 {
 	long int	timestamp;

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 13:01:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/06/27 15:43:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:40:37 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_is_number(char **argv)
 	{
 		if (argv[j][i] == '\0')
 		{
-			ft_putstr_fd("Error\n'\0' argument\n", 2);
+			ft_putstr_fd("Error\nArgument\n", 2);
 			return (-1);
 		}
 		while (argv[j][i])

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 09:34:27 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:20:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	initialization_philo(t_philo *philo, t_data *data)
 		philo[i].nb_meals_eaten = 0;
 		philo[i].nb_forks = 0;
 		philo[i].left_fork = &data->forks[i];
-		// ! si c'est le dernier , sa sera la fourchette de gauche du premier
-		// ! sinon c'est la fourchette de gauche du philo a ta droite 
 		if (philo[i].id_philo == data->number_of_philosophers)
 			philo[i].right_fork = &data->forks[0];
 		else
@@ -71,13 +69,14 @@ int	initialization_mutex(t_data *data, int nb_philo)
 	int	check;
 
 	i = 0;
-	while (i < nb_philo)
-	{
-		check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
-		if (check != 0)
-			return (-1);
-		i++;
-	}
+	// while (i < nb_philo)
+	// {
+	(void)nb_philo;
+	check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
+	if (check != 0)
+		return (-1);
+		// i++;
+	// }
 	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
 	if (check != 0)
 		return (-1);

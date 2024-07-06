@@ -1,6 +1,6 @@
 #=================== NAME ===================#
 
-NAME = philosophers
+NAME = philo
 
 #================ COMPILATOR ================#
 CC = clang

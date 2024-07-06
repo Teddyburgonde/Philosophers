@@ -6,23 +6,23 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:32:09 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/01 07:43:28 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:00:55 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	check_philo_is_dead(t_philo *philo)
+int	philo_is_dead(t_philo *philo)
 {
 	if (philo->data->is_dead == 1)
 	{
-		print_message(philo, "dead");
+		print_message(philo, "died");
 		return (-1);
 	}
 	return (0);
 }
 
-int	is_philo_dead(t_philo *philo)
+int	check_philo_is_dead(t_philo *philo)
 {
 	long int	current_time;
 
@@ -39,12 +39,18 @@ int	is_philo_dead(t_philo *philo)
 	//! dans cette boucle le philo est 
 	//! mort car le temps passé depuis son dernier repas
 	//! est supperieur au temps maximal sans manger.
-	if (current_time - philo->last_time_eaten > philo->data->time_to_die)
+	if (current_time - philo->last_time_eaten >= philo->data->time_to_die)
 	{
+		
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
+		if (philo->data->is_dead == 1)
+		{
+			pthread_mutex_unlock(&philo->data->is_dead_mutex);
+			return (1);
+		}
 		philo->data->is_dead = 1;
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
-		check_philo_is_dead(philo);
+		philo_is_dead(philo);
 		return (1);
 	}
 	return (0);
