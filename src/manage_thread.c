@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:26 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:46:56 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:37:44 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	manage_thread_start_ft_routine(t_philo	*philo, t_data *data)
 
 	i = 0;
 	check = 0;
-	while (i < data->number_of_philosophers) 
+	while (i < data->number_of_philosophers)
 	{
 		if (pthread_create(&philo[i].thread_id,
 				NULL, (void *)ft_routine, &philo[i]) != 0)

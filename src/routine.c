@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:04:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:52:56 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:40:53 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	take_forks(t_philo *philo)
 {
 	while (philo->nb_forks < 2)
 	{
-		if (check_philo_is_dead(philo) == 1 || philo->data->philo_satiated == philo->data->number_of_philosophers)
+		if (check_philo_is_dead(philo) == 1
+			|| philo->data->philo_satiated
+			== philo->data->number_of_philosophers)
 			break ;
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
 		if (philo->left_fork->fork_is_available == 0)
@@ -25,7 +27,9 @@ void	take_forks(t_philo *philo)
 			philo->nb_forks++;
 		}
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-		if (check_philo_is_dead(philo) == 1 || philo->data->philo_satiated == philo->data->number_of_philosophers)
+		if (check_philo_is_dead(philo) == 1
+			|| philo->data->philo_satiated
+			== philo->data->number_of_philosophers)
 			break ;
 		pthread_mutex_lock(&philo->right_fork->fork_mutex);
 		if (philo->right_fork->fork_is_available == 0)
@@ -49,13 +53,14 @@ void	ft_eat(t_philo *philo)
 
 void	ft_sleep(t_philo *philo)
 {
-	long int current_time;
-	
+	long int	current_time;
+
 	if (check_philo_is_dead(philo))
 		return ;
 	current_time = get_timestamp(philo->data->start_time);
 	print_message(philo, "sleeping");
-	while (get_timestamp(philo->data->start_time) - current_time < philo->data->time_to_sleep)
+	while (get_timestamp(philo->data->start_time)
+		- current_time < philo->data->time_to_sleep)
 	{
 		if (check_philo_is_dead(philo))
 			return ;
@@ -66,18 +71,24 @@ void	ft_sleep(t_philo *philo)
 }
 
 void	*ft_routine(t_philo *philo)
-{	
+{
 	if (philo->id_philo % 2 == 0)
 		ft_usleep(50);
 	while (1)
 	{
-		if (check_philo_is_dead(philo) == 1 || philo->data->philo_satiated == philo->data->number_of_philosophers)
+		if (check_philo_is_dead(philo) == 1
+			|| philo->data->philo_satiated
+			== philo->data->number_of_philosophers)
 			return (NULL);
 		take_forks(philo);
-		if (check_philo_is_dead(philo) == 1 || philo->data->philo_satiated == philo->data->number_of_philosophers)
+		if (check_philo_is_dead(philo) == 1
+			|| philo->data->philo_satiated
+			== philo->data->number_of_philosophers)
 			return (NULL);
 		ft_eat(philo);
-		if (check_philo_is_dead(philo) == 1 || philo->data->philo_satiated == philo->data->number_of_philosophers)
+		if (check_philo_is_dead(philo) == 1
+			|| philo->data->philo_satiated
+			== philo->data->number_of_philosophers)
 			return (NULL);
 		ft_sleep(philo);
 	}

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:20:22 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 19:35:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:41:15 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ void	make_forks_unavailable(t_philo *philo)
 	philo->right_fork->fork_is_available = 0;
 	pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 }
-

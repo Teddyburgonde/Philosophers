@@ -12,9 +12,8 @@ LDFLAGS = -lpthread
 
 #============= MANDATORY SOURCES =============#
 
-SRCS = src/error.c \
-		src/initialization.c \
-		src/parsing_number.c \
+SRCS =	src/initialization.c \
+		src/parsing_numbers.c \
 		src/philo_is_dead.c \
 		src/routine.c \
 		src/time.c \

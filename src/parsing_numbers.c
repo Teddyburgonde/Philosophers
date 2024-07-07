@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_number.c                                   :+:      :+:    :+:   */
+/*   parsing_numbers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 13:01:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:40:37 by tebandam         ###   ########.fr       */
+/*   Created: 2024/07/07 08:15:31 by tebandam          #+#    #+#             */
+/*   Updated: 2024/07/07 08:15:34 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	check_number_size(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_atoi(argv[i]) < 0)
+		{
+			ft_putstr_fd("Error\nOverflow\n", 2);
+			return (-1);
+		}
+		else if (ft_atoi(argv[i]) == 0)
+		{
+			ft_putstr_fd("Error\n0 is not allowed\n", 2);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	check_is_number(char **argv)
 {

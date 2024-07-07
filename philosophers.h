@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:11:26 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:36:43 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_philo
 
 int			check_is_number(char **argv);
 int			incorrect_number_arguments(int argc);
+int			check_number_size(int argc, char **argv);
 
 /*
 * Initilization
@@ -69,7 +70,7 @@ int			incorrect_number_arguments(int argc);
 
 int			initialization_philo(t_philo *philo, t_data *data);
 int			initialization_data(t_data *data, char **argv);
-int			initialization_mutex(t_data *data, int nb_philo);
+int			initialization_mutex(t_data *data);
 /*
 * time
 */
@@ -94,10 +95,6 @@ void		take_forks(t_philo *philo);
 void		*ft_routine(t_philo *philo);
 
 /*
-* free
-*/
-
-/*
 * manage philosophers
 */
 
@@ -117,7 +114,6 @@ int			check_philo_is_dead(t_philo *philo);
 
 void		printf_for_take_fork(t_philo *philo, t_fork *fork);
 void		print_message(t_philo *philo, char *state);
-
 
 /*
 * utils for routine

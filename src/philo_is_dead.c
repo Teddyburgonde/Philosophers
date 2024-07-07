@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:32:09 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:00:55 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:37:34 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,8 @@ int	check_philo_is_dead(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->data->is_dead_mutex);
 	current_time = get_timestamp(philo->data->start_time);
-	//! Vérifie si le temps écoulé depuis le dernier repas dépasse 'time_to_die'
-	//! time_to_die est le temps maximun qui philo peut passé sans manger.
-	//! dans cette boucle le philo est 
-	//! mort car le temps passé depuis son dernier repas
-	//! est supperieur au temps maximal sans manger.
 	if (current_time - philo->last_time_eaten >= philo->data->time_to_die)
 	{
-		
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		if (philo->data->is_dead == 1)
 		{

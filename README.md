@@ -169,6 +169,16 @@ gcc -Wall -Werror -Wextra -lpthread main.c
 ```
 
 
+## Parametres de compilation
+```c
+philosophers 5 800 200 200 7
+number_of_philosophers
+time_to_die
+time_to_eat 
+time_to_sleep
+[number_of_times_each_philosopher_must_eat]
+```
+
 ## Un squelette du projet : 
 ```c
 
@@ -312,6 +322,45 @@ Une idee sa serait de crée une boucle avec une logique comme :
 - Ensuite il pense
 - Pour finir il dort 
 ```
+
+## Verifier si un philosopher est mort
+
+```c
+int	check_philo_is_dead(t_philo *philo)
+{
+	long int	current_time;
+
+	pthread_mutex_lock(&philo->data->is_dead_mutex);
+	if (philo->data->is_dead == 1)
+	{
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->data->is_dead_mutex);
+	current_time = get_timestamp(philo->data->start_time);
+	//! Vérifie si le temps écoulé depuis le dernier repas dépasse 'time_to_die'
+	//! time_to_die est le temps maximun qui philo peut passé sans manger.
+	//! dans cette boucle le philo est 
+	//! mort car le temps passé depuis son dernier repas
+	//! est supperieur au temps maximal sans manger.
+	if (current_time - philo->last_time_eaten >= philo->data->time_to_die)
+	{
+		
+		pthread_mutex_lock(&philo->data->is_dead_mutex);
+		if (philo->data->is_dead == 1)
+		{
+			pthread_mutex_unlock(&philo->data->is_dead_mutex);
+			return (1);
+		}
+		philo->data->is_dead = 1;
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		philo_is_dead(philo);
+		return (1);
+	}
+	return (0);
+}
+```
+
 
 ## gettimeofday
 

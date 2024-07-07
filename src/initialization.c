@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 22:20:01 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:09:53 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,15 @@ int	initialization_data(t_data *data, char **argv)
 	return (0);
 }
 
-int	initialization_mutex(t_data *data, int nb_philo)
+int	initialization_mutex(t_data *data)
 {
 	int	i;
 	int	check;
 
 	i = 0;
-	// while (i < nb_philo)
-	// {
-	(void)nb_philo;
 	check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
 	if (check != 0)
 		return (-1);
-		// i++;
-	// }
 	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
 	if (check != 0)
 		return (-1);

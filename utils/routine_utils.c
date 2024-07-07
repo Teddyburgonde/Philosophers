@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:19:35 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/06 21:23:05 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:41:31 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	philosopher_is_eating(t_philo *philo)
 {
-	long int start_of_meal;
+	long int	start_of_meal;
 	long int	current_time;
 
 	if (check_philo_is_dead(philo) == 1)
@@ -34,5 +34,3 @@ void	philosopher_is_eating(t_philo *philo)
 		current_time = get_timestamp(philo->data->start_time);
 	}
 }
-
-

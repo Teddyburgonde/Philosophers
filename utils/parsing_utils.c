@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:21:51 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/02 19:35:17 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/07 08:05:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (a * sign);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			write (fd, &s[i], 1);
+			i++;
+		}
+	}
 }
