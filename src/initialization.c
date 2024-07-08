@@ -6,12 +6,22 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 23:00:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/07 08:09:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/08 04:50:38 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+/*
+	Dans ce fichier j'initialise mes 3 structures
+*/
+
+
+/*
+	Le dernier if indique que si on est au dernier philosopher , la fourchette de droite
+	sera la premiere fourchette de la table, on reviens au debut,
+	sinon la fourchette qui est a la droite du philosopher c'est la fourchette suivante.
+*/
 int	initialization_philo(t_philo *philo, t_data *data)
 {
 	int	i;
@@ -34,7 +44,10 @@ int	initialization_philo(t_philo *philo, t_data *data)
 	}
 	return (0);
 }
-
+/*
+	time_to_eat , time_to_sleep etc... sont donné dans le sujet.
+	J'ai fais un atoi pour pouvoir interpreter en int les arguments dans le terminal.
+*/
 int	initialization_data(t_data *data, char **argv)
 {
 	data->number_of_philosophers = ft_atoi(argv[1]);
@@ -63,12 +76,12 @@ int	initialization_data(t_data *data, char **argv)
 	return (0);
 }
 
+// pthread_mutex_init renvoie 0 si tout c'est bien passé
+// donc si il renvoie pas de 0 c'est qu'il y a eu un probleme.
 int	initialization_mutex(t_data *data)
 {
-	int	i;
 	int	check;
 
-	i = 0;
 	check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
 	if (check != 0)
 		return (-1);

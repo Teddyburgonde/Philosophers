@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:31:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/07 08:13:18 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/08 04:52:12 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	check = 0;
+	// parsing où je check les differentes entrées
 	if (incorrect_number_arguments(argc) == -1 || check_is_number(argv) == -1
 		|| check_number_size(argc, argv) == -1)
 		return (-1);
@@ -34,7 +35,10 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (manage_thread_start_ft_routine(philo, &data) == -1)
 		return (-1);
+	// Cela permet de detruire les mutex , cependant je n'ai pas vue de difference dans mon programme 
+	// avec ou sans cette fonction
 	destroy_all_mutex(philo, &data);
+
 	free(philo);
 	free(data.forks);
 	return (0);

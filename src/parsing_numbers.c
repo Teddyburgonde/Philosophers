@@ -6,12 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 08:15:31 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/07 08:15:34 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/08 04:55:40 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+// Parsing pour gerer differents cas d'erreurs
 int	check_number_size(int argc, char **argv)
 {
 	int	i;

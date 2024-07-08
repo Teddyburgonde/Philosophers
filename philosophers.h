@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:40:53 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/07 08:36:43 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/08 05:15:58 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		*ft_routine(t_philo *philo);
 */
 
 void		check_and_update_satiety_of_philosopher(t_philo *philo);
-void		make_forks_unavailable(t_philo *philo);
+void		make_forks_available(t_philo *philo);
 
 /*
 * dead

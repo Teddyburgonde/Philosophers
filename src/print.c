@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 06:08:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/07 08:37:01 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/08 05:08:07 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_strncmp(char *s1, char *s2, size_t n)
 	}
 	return (0);
 }
-
+// Message pour dire que a telle heure , le philosopher x a pris une fourchette 
 void	printf_for_take_fork(t_philo *philo, t_fork *fork)
 {
 	pthread_mutex_lock(&philo->data->printf_mutex);
@@ -36,6 +36,8 @@ void	printf_for_take_fork(t_philo *philo, t_fork *fork)
 	fork->fork_is_available = 1;
 }
 
+// Message pour dire que a telle heure , le philosopher x a fait cette* action
+// j'ai fais un strncmp pour differencier le message de la mort
 void	print_message(t_philo *philo, char *state)
 {
 	pthread_mutex_lock(&philo->data->printf_mutex);
