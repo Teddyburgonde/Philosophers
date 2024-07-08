@@ -1,5 +1,4 @@
 > [!IMPORTANT]
-> **En construction** 🚧
 **Dernière mise à jour 8/07/2024 à 05h25.**
 
 
