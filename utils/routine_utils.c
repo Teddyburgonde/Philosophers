@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:19:35 by tebandam          #+#    #+#             */
-/*   Updated: 2024/07/08 05:23:36 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/07/10 07:21:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	philosopher_is_eating(t_philo *philo)
 	{
 		if (check_philo_is_dead(philo) == 1)
 		{
-			usleep(500);
+			ft_usleep(500);
 			return ;
 		}
 		// check le temps pour permettre que la while puisse s'arreter a un moment.
